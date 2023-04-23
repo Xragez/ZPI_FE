@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div class="row registerPage ">
+
+        <div class="col-lg-9 registerImage">
+          <a routerLink="/">
+            <div class="arrow-left">
+              <i class="fa-solid fa-arrow-left"></i>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-lg-3 align-self-center div-form">
+            <div class="mb-4">
+              <p>Posiadasz konto? </p>
+              <a routerLink="/login" class="btn btn-outline-dark" role="button" aria-disabled="true" >Zaloguj się</a>
+            </div>
+            <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email</label>
+                  <input type="email" class="form-control" formControlName="email">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Hasło</label>
+                  <input type="password" class="form-control" formControlName="password">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Powtórz hasło</label>
+                    <input type="password" class="form-control" formControlName="confirmPassword">
+                  </div>
+                <div class="mb-3">
+                    <label for="nick" class="form-label">Nick</label>
+                    <input type="text" class="form-control"  formControlName="nick">
+                </div>
+                <div *ngIf="email && email.invalid && email.touched">
+                  <div class="alert alert-danger" role="alert" >
+                    Wprowadź poprawny adres email!
+                  </div>
+                </div>
+                <div *ngIf="password && password.invalid && password.touched">
+                  <div class="alert alert-danger" role="alert" >
+                    Hasło powinno mieć minimum 8 znaków.
+                  </div>
+                </div>
+                <div *ngIf="confirmPassword && confirmPassword.invalid && confirmPassword.touched">
+                  <div class="alert alert-danger" role="alert" >
+                    Hasło powinno mieć minimum 8 znaków.
+                  </div>
+                </div>
+                <div *ngIf="registerForm.errors?.['passwordMissmatchError'] && getControl('confirmPassword')?.touched">
+                  <div class="alert alert-danger" role="alert" >
+                    Hasło nie są takie same!
+                  </div>
+                </div>
+                <div *ngIf="nick && nick.invalid && nick.touched">
+                  <div class="alert alert-danger" role="alert" >
+                    Nick jest wymagany!
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+              </form>
+        </div>
+    </div>
+

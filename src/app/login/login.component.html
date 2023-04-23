@@ -1,0 +1,49 @@
+
+<div class="container-fluid">
+    <div class="row loginPage ">
+
+        <div class="col-lg-9 loginImage">
+            <a routerLink="/">
+              <div class="arrow-left">
+                <i class="fa-solid fa-arrow-left"></i>
+              </div>
+            </a>
+        </div>
+
+        <div class="col-lg-3 align-self-center div-form">
+          <div class="mb-4">
+            <p class="register-title ">Nie masz konta?</p>
+            <a routerLink="/register" class="btn btn-outline-dark" role="button" aria-disabled="true" >Zarejestruj się</a>
+          </div>
+          
+            <form [formGroup]="loginForm" (ngSubmit)="loginUser()" >
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" formControlName="email">
+                </div> 
+                <div class="mb-3">
+                  <label for="password" class="form-label">Hasło</label>
+                  <input type="password" class="form-control" id="password" formControlName="password">
+                </div>
+
+                  <div *ngIf="email && email.invalid && email.touched">
+                    <div class="alert alert-danger" role="alert" >
+                      Wprowadź poprawny adres email!
+                    </div>
+                  </div>
+                  <div *ngIf="password && password.invalid && password.touched && password.hasError('required')">
+                    <div class="alert alert-danger" role="alert" >
+                      Hasło jest wymagane.
+                    </div>
+                  </div>
+                
+                <button type="submit" class="btn btn-primary">Zaloguj się</button>
+            </form>
+              <div class="pt-3">
+                <p>
+                    <a class="btn btn-sm btn-outline-dark" href="">Nie pamiętasz hasła?</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

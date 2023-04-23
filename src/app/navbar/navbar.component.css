@@ -1,0 +1,15 @@
+.navbar{
+    background-color: black;
+    color: white;
+    max-height: 66px !important;
+}
+
+.navbar li a{
+    color: white;
+}
+
+.navbar-brand i {
+    font-size: 36px;
+    margin-left: 45px;
+}
+
