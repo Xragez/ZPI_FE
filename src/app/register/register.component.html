@@ -16,7 +16,7 @@
             </div>
             <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Email</label>
+                  <label class="form-label">Email</label>
                   <input type="email" class="form-control" formControlName="email">
                 </div>
                 <div class="mb-3">
@@ -28,7 +28,7 @@
                     <input type="password" class="form-control" formControlName="confirmPassword">
                   </div>
                 <div class="mb-3">
-                    <label for="nick" class="form-label">Nick</label>
+                    <label class="form-label">Nick</label>
                     <input type="text" class="form-control"  formControlName="nick">
                 </div>
                 <div *ngIf="email && email.invalid && email.touched">
@@ -56,8 +56,8 @@
                     Nick jest wymagany!
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+                <button type="submit" (click)="registerUser()" class="btn btn-primary">Zarejestruj się</button>
               </form>
         </div>
     </div>
-
+</div>

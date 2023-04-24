@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { passwordMatch } from 'src/validators/passwordMatch';
 import { AbstractControl } from "@angular/forms";
+import {AuthService, RegisterUser} from "../service/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,7 @@ import { AbstractControl } from "@angular/forms";
 })
 export class RegisterComponent {
 
+  constructor(private authService: AuthService) {}
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8),]),
@@ -40,6 +42,12 @@ export class RegisterComponent {
   }
 
   registerUser(){
+    const user:RegisterUser = {
+      username: "test",
+      email: "Test",
+      password: "test"
+    }
+    this.authService.register(user);
     console.warn(this.registerForm.value)
   }
 
