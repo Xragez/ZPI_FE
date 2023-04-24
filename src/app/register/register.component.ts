@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { passwordMatch } from 'src/validators/passwordMatch';
 import { AbstractControl } from "@angular/forms";
+import {AuthService, RegisterUser} from "../service/auth-service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -10,11 +12,14 @@ import { AbstractControl } from "@angular/forms";
 })
 export class RegisterComponent {
 
+  registerError: boolean = false;
+
+  constructor(private authService: AuthService, private router: Router) {}
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8),]),
     confirmPassword: new FormControl('', [Validators.required]),
-    nick: new FormControl("", Validators.required)
+    username: new FormControl('', Validators.required)
   }, [passwordMatch("password", "confirmPassword")])
 
   getControl(name: any): AbstractControl | null {
@@ -35,12 +40,23 @@ export class RegisterComponent {
     return this.registerForm.get('confirmPassword');
   }
 
-  get nick(){
-    return this.registerForm.get('nick');
+  get username(){
+    return this.registerForm.get('username');
   }
 
   registerUser(){
-    console.warn(this.registerForm.value)
+    if (this.username?.value && this.email?.value && this.password?.value) {
+      const user:RegisterUser = new RegisterUser(
+        this.username?.value,
+        this.email?.value,
+        this.password?.value
+      );
+      this.registerError = false;
+      this.authService.register(user).subscribe({
+        next: () => {this.router.navigate(['/login'])},
+        error: () => {this.registerError = true}
+      })
+    }
   }
 
 }
