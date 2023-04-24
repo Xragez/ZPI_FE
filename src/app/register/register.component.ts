@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { passwordMatch } from 'src/validators/passwordMatch';
 import { AbstractControl } from "@angular/forms";
-import {AuthService, RegisterUser} from "../service/auth.service";
+import {AuthService, RegisterUser} from "../service/auth-service/auth.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -46,11 +46,11 @@ export class RegisterComponent {
 
   registerUser(){
     if (this.username?.value && this.email?.value && this.password?.value) {
-      const user:RegisterUser = {
-        username: this.username?.value,
-        email: this.email?.value,
-        password: this.password?.value
-      }
+      const user:RegisterUser = new RegisterUser(
+        this.username?.value,
+        this.email?.value,
+        this.password?.value
+      );
       this.registerError = false;
       this.authService.register(user).subscribe({
         next: () => {this.router.navigate(['/login'])},

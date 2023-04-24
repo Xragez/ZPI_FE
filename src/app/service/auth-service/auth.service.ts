@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {environment} from '../../environments/environment'
+import {environment} from '../../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -40,11 +40,13 @@ export class RegisterUser {
     this.username = username;
     this.email = email;
     this.password = password;
+    this.role = 'USER';
   }
 
   username: string
   email: string
   password: string
+  role: string
 }
 
 export class LoginUser {
