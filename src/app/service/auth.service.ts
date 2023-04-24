@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {environment} from '../../environments/environment'
@@ -12,6 +12,10 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
+  private createBasicAuthToken(email: string, password: string) {
+    return window.btoa(email + ":" + password)
+  }
+
   register(user: RegisterUser) {
     return this.http.post(`${environment.apiUrl}/register`, user).pipe(catchError(() => {
       return throwError(()=>{});
@@ -19,7 +23,13 @@ export class AuthService {
   }
 
   login(user: LoginUser) {
-    return this.http.post(`${environment.apiUrl}/login`, user).pipe(catchError(() => {
+    const token = this.createBasicAuthToken(user.email, user.password)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Basic ' + token
+      })
+    }
+    return this.http.post(`${environment.apiUrl}/login`, user, httpOptions).pipe(catchError(() => {
       return throwError(()=>{});
     }));
   }

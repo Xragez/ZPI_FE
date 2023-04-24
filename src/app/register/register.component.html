@@ -37,7 +37,7 @@
                   </div>
                 </div>
                 <div *ngIf="(password && password.touched) || (confirmPassword && confirmPassword.touched)">
-                  <div *ngIf="(password && password.invalid) || (confirmPassword && confirmPassword.invalid)">
+                  <div *ngIf="password && password.invalid">
                     <div class="alert alert-danger" role="alert" >
                       Hasło powinno mieć minimum 8 znaków.
                     </div>

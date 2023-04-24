@@ -15,17 +15,16 @@
             <p class="register-title ">Nie masz konta?</p>
             <a routerLink="/register" class="btn btn-outline-dark" role="button" aria-disabled="true" >Zarejestruj się</a>
           </div>
-          
+
             <form [formGroup]="loginForm" (ngSubmit)="loginUser()" >
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
                   <input type="email" class="form-control" id="email" formControlName="email">
-                </div> 
+                </div>
                 <div class="mb-3">
                   <label for="password" class="form-label">Hasło</label>
                   <input type="password" class="form-control" id="password" formControlName="password">
                 </div>
-
                   <div *ngIf="email && email.invalid && email.touched">
                     <div class="alert alert-danger" role="alert" >
                       Wprowadź poprawny adres email!
@@ -36,7 +35,6 @@
                       Hasło jest wymagane.
                     </div>
                   </div>
-                
                 <button type="submit" class="btn btn-primary">Zaloguj się</button>
             </form>
               <div class="pt-3">

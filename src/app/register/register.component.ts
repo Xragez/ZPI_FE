@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { passwordMatch } from 'src/validators/passwordMatch';
 import { AbstractControl } from "@angular/forms";
 import {AuthService, RegisterUser} from "../service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent {
 
   registerError: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8),]),
@@ -44,16 +45,18 @@ export class RegisterComponent {
   }
 
   registerUser(){
-    const user:RegisterUser = {
-      username: this.username?.value ? this.username?.value : '',
-      email: this.email?.value ? this.email?.value : '',
-      password: this.password?.value ? this.password?.value : ''
+    if (this.username?.value && this.email?.value && this.password?.value) {
+      const user:RegisterUser = {
+        username: this.username?.value,
+        email: this.email?.value,
+        password: this.password?.value
+      }
+      this.registerError = false;
+      this.authService.register(user).subscribe({
+        next: () => {this.router.navigate(['/login'])},
+        error: () => {this.registerError = true}
+      })
     }
-    this.registerError = false;
-    this.authService.register(user).subscribe({
-      next: response => {console.log(response)},
-      error: () => {this.registerError = true}
-    })
   }
 
 }
