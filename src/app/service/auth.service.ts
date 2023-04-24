@@ -9,7 +9,8 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(user: RegisterUser) {
-    this.http.post<RegisterUser>("localhost:8080/register", user);
+    this.http.post("http://localhost:8080/register", user)
+      .subscribe(response => {console.log(response)});
   }
 }
 

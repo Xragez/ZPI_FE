@@ -16,7 +16,7 @@ export class RegisterComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8),]),
     confirmPassword: new FormControl('', [Validators.required]),
-    nick: new FormControl("", Validators.required)
+    username: new FormControl('', Validators.required)
   }, [passwordMatch("password", "confirmPassword")])
 
   getControl(name: any): AbstractControl | null {
@@ -37,8 +37,8 @@ export class RegisterComponent {
     return this.registerForm.get('confirmPassword');
   }
 
-  get nick(){
-    return this.registerForm.get('nick');
+  get username(){
+    return this.registerForm.get('username');
   }
 
   registerUser(){

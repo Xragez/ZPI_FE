@@ -28,8 +28,8 @@
                     <input type="password" class="form-control" formControlName="confirmPassword">
                   </div>
                 <div class="mb-3">
-                    <label class="form-label">Nick</label>
-                    <input type="text" class="form-control"  formControlName="nick">
+                    <label class="form-label">Nazwa użytkownika</label>
+                    <input type="text" class="form-control"  formControlName="username">
                 </div>
                 <div *ngIf="email && email.invalid && email.touched">
                   <div class="alert alert-danger" role="alert" >
@@ -51,12 +51,12 @@
                     Hasło nie są takie same!
                   </div>
                 </div>
-                <div *ngIf="nick && nick.invalid && nick.touched">
+                <div *ngIf="username && username.invalid && username.touched">
                   <div class="alert alert-danger" role="alert" >
                     Nick jest wymagany!
                   </div>
                 </div>
-                <button type="submit" (click)="registerUser()" class="btn btn-primary">Zarejestruj się</button>
+                <button type="submit" class="btn btn-primary">Zarejestruj się</button>
               </form>
         </div>
     </div>
