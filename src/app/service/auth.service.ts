@@ -1,16 +1,21 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   register(user: RegisterUser) {
-    this.http.post("http://localhost:8080/register", user)
-      .subscribe(response => {console.log(response)});
+    return this.http.post("http://localhost:8080/register", user).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+
   }
 }
 
@@ -20,6 +25,7 @@ export class RegisterUser {
     this.email = email;
     this.password = password;
   }
+
   username: string
   email: string
   password: string

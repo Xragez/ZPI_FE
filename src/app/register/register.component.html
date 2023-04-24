@@ -36,24 +36,26 @@
                     Wprowadź poprawny adres email!
                   </div>
                 </div>
-                <div *ngIf="password && password.invalid && password.touched">
-                  <div class="alert alert-danger" role="alert" >
-                    Hasło powinno mieć minimum 8 znaków.
+                <div *ngIf="(password && password.touched) || (confirmPassword && confirmPassword.touched)">
+                  <div *ngIf="(password && password.invalid) || (confirmPassword && confirmPassword.invalid)">
+                    <div class="alert alert-danger" role="alert" >
+                      Hasło powinno mieć minimum 8 znaków.
+                    </div>
                   </div>
-                </div>
-                <div *ngIf="confirmPassword && confirmPassword.invalid && confirmPassword.touched">
-                  <div class="alert alert-danger" role="alert" >
-                    Hasło powinno mieć minimum 8 znaków.
-                  </div>
-                </div>
-                <div *ngIf="registerForm.errors?.['passwordMissmatchError'] && getControl('confirmPassword')?.touched">
-                  <div class="alert alert-danger" role="alert" >
-                    Hasło nie są takie same!
+                  <div *ngIf="registerForm.errors?.['passwordMismatchError'] && confirmPassword && confirmPassword.touched">
+                    <div class="alert alert-danger" role="alert" >
+                      Hasła nie są takie same!
+                    </div>
                   </div>
                 </div>
                 <div *ngIf="username && username.invalid && username.touched">
                   <div class="alert alert-danger" role="alert" >
-                    Nick jest wymagany!
+                    Nazwa użytkownika jest wymagana.
+                  </div>
+                </div>
+                <div *ngIf="registerError">
+                  <div class="alert alert-danger" role="alert" >
+                    Wystąpił błąd, spróbuj ponownie póżniej.
                   </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Zarejestruj się</button>

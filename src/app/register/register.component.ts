@@ -11,6 +11,8 @@ import {AuthService, RegisterUser} from "../service/auth.service";
 })
 export class RegisterComponent {
 
+  registerError: boolean = false;
+
   constructor(private authService: AuthService) {}
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -43,12 +45,15 @@ export class RegisterComponent {
 
   registerUser(){
     const user:RegisterUser = {
-      username: "test",
-      email: "Test",
-      password: "test"
+      username: this.username?.value ? this.username?.value : '',
+      email: this.email?.value ? this.email?.value : '',
+      password: this.password?.value ? this.password?.value : ''
     }
-    this.authService.register(user);
-    console.warn(this.registerForm.value)
+    this.registerError = false;
+    this.authService.register(user).subscribe({
+      next: response => {console.log(response)},
+      error: () => {this.registerError = true}
+    })
   }
 
 }

@@ -12,7 +12,7 @@ export function passwordMatch(password: string, confirmPassword: string) {
 
             return null;
 
-        return { passwordMissmatchError: true }
+        return { passwordMismatchError: true }
 
     }
 
