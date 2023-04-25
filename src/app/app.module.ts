@@ -18,7 +18,7 @@ import { MatListModule } from '@angular/material/list';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
-import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
