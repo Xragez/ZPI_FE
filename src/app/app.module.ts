@@ -18,6 +18,7 @@ import { MatListModule } from '@angular/material/list';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
+import { UserGalleryComponent } from './user-gallery/user-gallery.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
     SidenavComponent,
     HeaderComponent,
     DashboardHomeComponent,
+    UserGalleryComponent,
   ],
   imports: [
     BrowserModule,

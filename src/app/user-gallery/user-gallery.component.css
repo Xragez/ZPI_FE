@@ -5,6 +5,7 @@
     background: #ababab;
     margin: 0 -1rem;
     font-size: 36px;
+    
 }
 
 .page__content{
@@ -14,13 +15,24 @@
     background: white;
     color: black;
     font-size: 2rem;
-    
+    position: absolute;
 }
 
-.user_info{
-    background-color:rgb(70, 70, 70);
-    color: white;
+.gallery{
+    position: relative;
+    padding: 20px;
+    display: flex;
+    max-width: 60vw;
+    justify-content: space-between;
+}
+
+.box{
+
     margin: 10px;
-    padding: 2px;
+}
+
+.box img {
+    max-width: 100%;
+    height: auto;
     border-radius: 10px;
 }
