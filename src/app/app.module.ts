@@ -20,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { UserGalleryComponent } from './user-gallery/user-gallery.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 
 @NgModule({
@@ -48,7 +49,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     MatIconModule,
     MatDividerModule,
     MatListModule,
-
+    NgxMasonryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
