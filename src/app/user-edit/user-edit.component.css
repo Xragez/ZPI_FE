@@ -1,0 +1,52 @@
+
+.mat-drawer-content {
+    overflow-x: hidden;
+}
+
+.page_box {
+    color: white;
+    padding: 0 1rem;
+    min-height: 120px;
+    background: #ababab;
+    margin: 0 -1rem;
+    font-size: 36px;
+}
+
+.page_content{
+    min-height: calc(100vh - 178px);
+    border-radius: 10px;
+    margin-top: -2rem;
+    background: white;
+    color: black;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+
+}
+
+.edit_conatiner{
+    width: 80vw;
+    height: auto;
+    margin-top: 20px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.edit_conatiner p {
+    font-size: 21px;
+}
+
+.add_img{
+    margin-left: 50px;
+    font-size: 18px;
+}
+
+
+.add_img img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+

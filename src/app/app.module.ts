@@ -19,6 +19,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { UserGalleryComponent } from './user-gallery/user-gallery.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { UserGalleryComponent } from './user-gallery/user-gallery.component';
     HeaderComponent,
     DashboardHomeComponent,
     UserGalleryComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,

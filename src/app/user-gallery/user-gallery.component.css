@@ -15,14 +15,15 @@
     background: white;
     color: black;
     font-size: 2rem;
-    position: absolute;
 }
 
 .gallery{
     position: relative;
     padding: 20px;
     display: flex;
-    max-width: 60vw;
+    max-width: 82vw;
+    height: auto;
+    display: flex;
     justify-content: space-between;
 }
 

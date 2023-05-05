@@ -13,3 +13,7 @@ mat-drawer {
 router-outline{
   height: 0px;
 }
+
+mat-drawer-content{
+  overflow-x: hidden;
+}
