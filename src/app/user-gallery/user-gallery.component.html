@@ -1,26 +1,14 @@
 <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">Galeria</div>
-    <div class="page__content shadow p-3 position-relative">
-      <div class="page__content-data position-absolute text-center">
+    <div class="d-flex page_box p-3 mt-2">Galeria</div>
+    <div class="page_content shadow p-3 position-relative">
+      <div class="page_content-data position-absolute text-center">
         
         <div class="gallery ">
-
-            <div class="box">
-                <img src="./assets/img/photos/1.jpg" alt="">
+          <ngx-masonry [options]="masonryOptions" [ordered]="true">
+            <div ngxMasonryItem class="masonry-item"  *ngFor="let picture of masonryImages" class="masonry-item">
+              <img src="{{picture.picture}}">
             </div>
-            <div class="box">
-                <img src="./assets/img/photos/2.jpg" alt="">
-            </div>
-            <div class="box">
-                <img src="./assets/img/photos/3.jpg" alt="">
-            </div>
-            <div class="box">
-                <img src="./assets/img/photos/4.jpg" alt="">
-            </div>
-            <div class="box">
-                <img src="./assets/img/photos/5.jpg" alt="">
-            </div>
-
+          </ngx-masonry>
         </div>
 
       </div>

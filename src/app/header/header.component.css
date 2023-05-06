@@ -1,32 +1,32 @@
 mat-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
 
-ul li {
-  list-style: none;
-}
+  ul li {
+    list-style: none;
+  }
 
-button {
-  outline: none;
-  border: 0;
-  background: transparent;
-}
+  button {
+    outline: none;
+    border: 0;
+    background: transparent;
+  }
 
-button img {
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-}
+  button img {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+  }
 
-.user {
-  font-size: 14px;
-}
+  .user {
+    font-size: 14px;
+  }
 
-mat-toolbar {
-  background: #f7f7f7;
-}
+  mat-toolbar {
+    background: #f7f7f7;
+  }
 
 
 

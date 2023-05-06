@@ -22,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { UserGalleryComponent } from './user-gallery/user-gallery.component';
 import { NgxMasonryModule } from 'ngx-masonry';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { NgxMasonryModule } from 'ngx-masonry';
     HeaderComponent,
     DashboardHomeComponent,
     UserGalleryComponent,
+    UserEditComponent,
   ],
   
   imports: [

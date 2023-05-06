@@ -1,18 +1,18 @@
 
 
 .logo {
-  text-align: center;
-  padding: 2.6rem 1rem;
-}
+    text-align: center;
+    padding: 2.6rem 1rem;
+  }
 
-img {
-  width: 200px;
-}
+  img {
+    width: 200px;
+  }
 
-.mat-divider {
-  border-top-width: 2px;
-  border-color: white;
-}
+  .mat-divider {
+    border-top-width: 2px;
+    border-color: white;
+  }
 
 
 

@@ -1,0 +1,67 @@
+<div class="container-fluid page">
+    <div class="d-flex page_box p-3 mt-2">Edytuj swoje dane</div>
+    <div class="page_content shadow p-3">
+      <div class="page_content-data">
+        
+        <div class="row edit_conatiner">
+
+          <div class="col-4">
+            <p>Zmień swoje dane</p>
+            <form>
+              <div class="mb-3">
+                <label for="user_name" class="form-label">Imie</label>
+                <input type="text" class="form-control" value="Janek">
+              </div>
+              <div class="mb-3">
+                <label for="user_surname" class="form-label">Nazwisko</label>
+                <input type="text" class="form-control" value="Kowal">
+              </div>
+              <div class="mb-3">
+                <label for="user_email" class="form-label">Email</label>
+                <input type="email" class="form-control" value="jkowal@gmail.com">
+              </div>
+              <div class="mb-3">
+                <label for="user_description" class="form-label">Opis</label>
+                <textarea class="form-control" rows="5" >
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi eum aut culpa exercitationem officiis quas tempora quae excepturi harum minima. Suscipit tempora impedit autem soluta nesciunt earum asperiores doloribus cupiditate?
+                </textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Zapisz</button>
+            </form>
+          </div>
+          <div class="col-4 add_img">
+            <p>Zmień swoje zdjęcie profilowe</p>
+            <form>
+              <div class="form-group">
+                <img [src]="url" height="200" class="mb-2">
+                <input type="file" (change)="onSelectFile($event)"><br>
+                <button type="submit" class="btn btn-primary mt-3">Zapisz</button>
+              </div>
+            </form>
+
+          </div>
+          
+          <div class="col-2">
+            <p>Zmień hasło</p>
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Aktualne hasło</label>
+                <input type="password" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Nowe hasło</label>
+                <input type="password" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Powtórz hasło</label>
+                <input type="password" class="form-control">
+              </div>
+              <button type="submit" class="btn btn-primary">Zapisz</button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
