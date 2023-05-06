@@ -1,0 +1,16 @@
+<div class="container-fluid page">
+    <div class="d-flex page_box p-3 mt-2">Galeria</div>
+    <div class="page_content shadow p-3 position-relative">
+      <div class="page_content-data position-absolute text-center">
+        
+        <div class="gallery ">
+          <ngx-masonry [options]="masonryOptions" [ordered]="true">
+            <div ngxMasonryItem class="masonry-item"  *ngFor="let picture of masonryImages" class="masonry-item">
+              <img src="{{picture.picture}}">
+            </div>
+          </ngx-masonry>
+        </div>
+
+      </div>
+    </div>
+  </div>

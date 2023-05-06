@@ -1,0 +1,40 @@
+.page_box {
+    color: white;
+    padding: 0 1rem;
+    min-height: 120px;
+    background: #ababab;
+    margin: 0 -1rem;
+    font-size: 36px;
+    
+}
+
+.page_content{
+    min-height: calc(100vh - 178px);
+    height: 120vh;
+    border-radius: 10px;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+    background: white;
+    color: black;
+    font-size: 2rem;
+    display: flex;
+    
+}
+
+
+.gallery {
+    width: 77vw;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 90px;
+    
+}
+
+
+.masonry-item img{
+    width: 200px;
+    margin: 10px;
+  }
+
+
+  
