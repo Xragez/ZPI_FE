@@ -1,0 +1,19 @@
+
+mat-drawer {
+  width: 260px;
+}
+mat-drawer-container {
+  height: 100%;
+}
+
+mat-drawer {
+  background: #ababab;
+}
+
+router-outline{
+height: 0px;
+}
+
+mat-drawer-content{
+overflow-x: hidden;
+}

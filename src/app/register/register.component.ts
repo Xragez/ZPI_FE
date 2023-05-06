@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { passwordMatch } from 'src/validators/passwordMatch';
-import { AbstractControl } from "@angular/forms";
+import { AbstractControl } from '@angular/forms';
 import {AuthService, RegisterUser} from "../service/auth-service/auth.service";
 import {Router} from "@angular/router";
 
