@@ -1,6 +1,45 @@
 <app-navbar></app-navbar>
 
-
+<div class="container-fluid">
+    
 <div class="container main-container">
-    <h1 class="text-center">Tablica z wpisami</h1>
+
+    <div class="links">
+        <div class="btn-group">
+            <a href="#" class="btn ">Tablica</a>
+            <a href="#" class="btn ">Artykułu</a>
+            <a href="#" class="btn ">Galeria</a>
+        </div>
+    </div>
+
+
+
+    <div class="board_form">
+        <form (submit)="submitPost()" [formGroup]="boardForm">
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Udostępnij nowy wpis</label>
+                <textarea class="form-control" rows="3" [(ngModel)]="message" formControlName="message" required></textarea>
+              </div>
+            <button type="submit" (click)="sharePost()" class="btn btn-primary">Udostępnij</button>
+        </form>
+        
+    </div>
+    
+    <div class="posts">
+
+        <div *ngFor="let message of messages" class="row post_box">
+            <div class="post">
+                <div class="post_content">
+                    <p>{{ message }}</p>
+                </div>
+                <div class="post_author">
+                    <p>Jan Nowak</p>
+                    
+                </div>
+            </div>     
+        </div>
+    </div>
+
+
+</div>
 </div>

@@ -1,7 +1,76 @@
+.container-fluid{
+    min-height: 100%;
+    height: auto;
+    background-color: rgb(245, 245, 245);
+}
 .main-container{
-    margin-top: 150px;
-    height: 100vh;
-    background-color: black;
+    padding-top: 150px;
+    height: auto;
     border-radius: 10px;
+    color: black;
+    padding-bottom: 20px;
+}
+
+.links{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.links .btn-group a{
+    width: 300px;
+    background-color: rgb(0, 0, 0);
     color: white;
 }
+
+.board_form{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.board_form textarea {
+    width: 510px;
+    resize: none;
+}
+
+.board_form label{
+    font-size: 19px;
+}
+
+.posts{
+    width: 500px;
+    margin: 0 auto;
+}
+
+
+.post_box .post{
+    margin-top: 10px;
+    width: 100%;
+    min-height: 100px;
+    border: solid black 0.5px;
+    border-radius: 10px;
+    background-color: rgb(248, 248, 248);
+}
+
+.post_box .post .post_content{
+    padding: 15px 15px 0 15px;
+  
+}
+
+.post_box .post .post_author{
+    font-size: 17px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.post_box .post .post_author span{
+    font-size: 14px;
+    font-weight: normal;
+    font-style: italic;
+}
+

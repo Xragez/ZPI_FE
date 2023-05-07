@@ -13,6 +13,7 @@ export class LoginComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8),]),
   })
+  
   loginUser(){
     console.warn(this.loginForm.value)
   }
