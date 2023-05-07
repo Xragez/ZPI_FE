@@ -18,12 +18,12 @@
               </div>
               <div class="mb-3">
                 <label for="user_email" class="form-label">Email</label>
-                <input type="email" class="form-control" value="jkowal@gmail.com">
+                <input type="email" class="form-control" value="{{user.email}}">
               </div>
               <div class="mb-3">
                 <label for="user_description" class="form-label">Opis</label>
                 <textarea class="form-control" rows="5" >
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi eum aut culpa exercitationem officiis quas tempora quae excepturi harum minima. Suscipit tempora impedit autem soluta nesciunt earum asperiores doloribus cupiditate?
+                  {{user.description}}
                 </textarea>
               </div>
               <button type="submit" class="btn btn-primary">Zapisz</button>
