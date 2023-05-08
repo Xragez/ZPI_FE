@@ -74,3 +74,16 @@
     font-style: italic;
 }
 
+.show_comments{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.show_comments button:hover{
+    font-weight: bold;
+}
+
+.comments{
+    display: none;
+}
+

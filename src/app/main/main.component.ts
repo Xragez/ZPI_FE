@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,41 +8,50 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class MainComponent implements OnInit{
 
-  boardForm = new FormGroup({
-    message: new FormControl(),
-  })
-
-
-  message: string = '';
-
-
-  messages: string[] = [
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet dolor vel ante ornare congue. Morbi sed iaculis ante. Nullam gravida, turpis quis malesuada ornare, orci neque congue tellus, ut eleifend ex eros sed mauris.',
-    'Vestibulum sed dolor odio. Pellentesque in lectus porta, feugiat dui sit amet, tristique neque. Nulla ultrices vestibulum eros, vel consectetur nunc dictum consectetur',
-    'Curabitur sed molestie mi, at ultricies nunc. Cras malesuada vel purus at tincidunt. Sed libero mauris, facilisis id justo at, ornare vestibulum nibh.'
-  ];
-
-  submitPost() {
-    
-  }
-
-  sharePost() {
-
-    if(this.message != ''){
-      this.messages.push(this.message);
-      this.boardForm.reset();
-    }
-    else{
-      
-    }
-
-
-  }
-
-  constructor() {}
+  constructor(private elRef: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
     
   }
+
+  boardForm = new FormGroup({
+    message: new FormControl(),
+  })
+
+  author: string = '';
+  message: string = '';
+  comment: string = '';
+
+  messages = [
+    { message: 'test', author: 'Jan Kowal', comment: [
+      {content: 'Testowy komentarz', author: 'AUTOR test'},
+      {content: 'Testowy komentarz 2', author: 'AUTOR test 2'},
+    ], showCommentsFlag: false
+  },
+    { message: 'test2', author: 'Jan Kowal', comment: [
+      {content: 'Testowy komentarz', author: 'AUTOR test'}
+    ], showCommentsFlag: false
+  },
+    { message: 'test3', author: 'Jan Kowal', }
+  ];
+
+
+  sharePost() {
+
+    if(this.message != ''){
+      this.messages.push({message: this.message, author: 'Autor TEST'});
+      this.boardForm.reset();
+    }
+
+  }
+
+  showCommentsFlag = false;
+  showComments( index: number) {
+
+    this.messages[index].showCommentsFlag = !this.messages[index].showCommentsFlag;
+
+
+  }
+
 
 }

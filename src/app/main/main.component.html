@@ -15,10 +15,9 @@
 
 
     <div class="board_form">
-        <form (submit)="submitPost()" [formGroup]="boardForm">
+        <form [formGroup]="boardForm">
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Udostępnij nowy wpis</label>
-                <textarea class="form-control" rows="3" [(ngModel)]="message" formControlName="message" required></textarea>
+                <textarea class="form-control" rows="3" [(ngModel)]="message" formControlName="message" required placeholder = "Udostępnij nowy wpis..."></textarea>
               </div>
             <button type="submit" (click)="sharePost()" class="btn btn-primary">Udostępnij</button>
         </form>
@@ -27,17 +26,26 @@
     
     <div class="posts">
 
-        <div *ngFor="let message of messages" class="row post_box">
+        <div *ngFor="let msg of messages; let i = index" class="row post_box">
             <div class="post">
                 <div class="post_content">
-                    <p>{{ message }}</p>
+                    <p>{{ msg.message }}</p>
                 </div>
                 <div class="post_author">
-                    <p>Jan Nowak</p>
-                    
+                    <p>{{ msg.author }}</p>
                 </div>
-            </div>     
+            </div>  
+            <div class="show_comments">
+                <button (click)="showComments(i)" type="button" class="btn">
+                    {{ showCommentsFlag ? 'Ukryj komentarze' : 'Pokaż komentarze' }}
+                </button>
+            </div>
+            <div *ngFor="let c of msg.comment" class="comments" id="comments" [style.display]="msg.showCommentsFlag ? 'block' : 'none'">
+                <p>{{c.author}}</p>
+                <p>{{c.content}}</p>
+            </div>
         </div>
+
     </div>
 
 
