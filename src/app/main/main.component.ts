@@ -23,16 +23,16 @@ export class MainComponent implements OnInit{
   comment: string = '';
 
   messages = [
-    { message: 'test', author: 'Jan Kowal', comment: [
-      {content: 'Testowy komentarz', author: 'AUTOR test'},
-      {content: 'Testowy komentarz 2', author: 'AUTOR test 2'},
+    { message: 'In elementum, arcu ac commodo pulvinar, eros magna ultrices felis, sed maximus quam ex sed orci. Mauris eget nisi vitae ex molestie imperdiet. In et euismod nisi.', author: 'Jan Kowal', comment: [
+      {content: 'Nam consectetur, nisi eget hendrerit sagittis, nulla eros finibus dui, non tincidunt risus urna sed purus.', author: 'Eryk Nowak'},
+      {content: 'Nam consectetur, nisi eget hendrerit sagittis, nulla eros finibus dui, non tincidunt risus urna sed purus.', author: 'Eryk Nowak'},
     ], showCommentsFlag: false
   },
-    { message: 'test2', author: 'Jan Kowal', comment: [
-      {content: 'Testowy komentarz', author: 'AUTOR test'}
+    { message: 'In elementum, arcu ac commodo pulvinar, eros magna ultrices felis, sed maximus quam ex sed orci. Mauris eget nisi vitae ex molestie imperdiet. In et euismod nisi.', author: 'Jan Kowal', comment: [
+      {content: 'Nam consectetur, nisi eget hendrerit sagittis, nulla eros finibus dui, non tincidunt risus urna sed purus.', author: 'AUTOR test'}
     ], showCommentsFlag: false
   },
-    { message: 'test3', author: 'Jan Kowal', }
+    { message: 'In elementum, arcu ac commodo pulvinar, eros magna ultrices felis, sed maximus quam ex sed orci. Mauris eget nisi vitae ex molestie imperdiet. In et euismod nisi.', author: 'Jan Kowal', }
   ];
 
 

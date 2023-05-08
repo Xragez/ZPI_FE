@@ -32,7 +32,7 @@
 
 
 .masonry-item img{
-    width: 200px;
+    max-width: 200px;
     margin: 10px;
   }
 

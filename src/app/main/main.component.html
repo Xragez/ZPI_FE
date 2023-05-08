@@ -37,12 +37,15 @@
             </div>  
             <div class="show_comments">
                 <button (click)="showComments(i)" type="button" class="btn">
-                    {{ showCommentsFlag ? 'Ukryj komentarze' : 'Pokaż komentarze' }}
+                    {{ msg.showCommentsFlag ? 'Ukryj komentarze' : 'Pokaż komentarze' }}
                 </button>
             </div>
-            <div *ngFor="let c of msg.comment" class="comments" id="comments" [style.display]="msg.showCommentsFlag ? 'block' : 'none'">
-                <p>{{c.author}}</p>
-                <p>{{c.content}}</p>
+            <div *ngFor="let c of msg.comment" class="comments" id="comments" [style.display]="msg.showCommentsFlag ? 'flex' : 'none'">
+                <div class="comment">
+                    <p class="author">{{c.author}}</p>
+                    <p>{{c.content}}</p>
+                </div>
+
             </div>
         </div>
 

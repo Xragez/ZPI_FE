@@ -41,14 +41,16 @@
 .posts{
     width: 500px;
     margin: 0 auto;
+    
 }
+
 
 
 .post_box .post{
     margin-top: 10px;
     width: 100%;
     min-height: 100px;
-    border: solid black 0.5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     border-radius: 10px;
     background-color: rgb(248, 248, 248);
 }
@@ -85,5 +87,20 @@
 
 .comments{
     display: none;
+    justify-content: flex-end;
 }
 
+.comment{
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color:rgb(247, 249, 252);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+.comment .author{
+    font-size: 15px;
+    font-weight: 500;
+
+}
