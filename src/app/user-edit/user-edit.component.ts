@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LocalService} from "../service/local-service/local.service";
 import { User } from '../model/user';
 import { UserService } from '../service/user-service/user.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-edit',
@@ -12,31 +13,55 @@ export class UserEditComponent implements OnInit{
 
   user: User = {
     id: 0,
-    username: "username",
-    email:"email",
-    role: "USER",
-    description: "brak"
+    username: "",
+    email:"",
+    role: "",
+    description: "",
   }
 
+  editForm = new FormGroup({
+    username: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required)
+  })
+
+
   constructor(private localStore: LocalService, private userService: UserService) {
-    this.userService.getUserByEmail(localStore.getData("email")).subscribe({
+    this.userService.getUserByEmail(this.localStore.getData("email")).subscribe({
       next: (response: any) => {
+        this.editForm.setValue({
+          username: response.username + "",
+          description: response.description + ""
+        });
+
         this.user.id = response.id;
         this.user.username = response.username;
         this.user.email = response.email;
         this.user.role = response.role;
         this.user.description = response.description;
-
         console.log(response);
       },
-      error: () => {
-        
-      }
-    })
+      error: () => { }
+    });
+  }
+
+  get username(){
+    return this.editForm.get('username');
+  }
+
+  get description(){
+    return this.editForm.get('description');
   }
 
   updateUserDetails() {
-    
+    if (this.username?.value) {
+      this.user.username = this.username?.value;
+      this.user.description = this.description?.value;
+
+      this.userService.updateUserDetails(this.user).subscribe({
+        next: () => {},
+        error: () => {}
+      })
+    }
   }
 
   ngOnInit() {

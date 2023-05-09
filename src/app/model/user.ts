@@ -12,5 +12,5 @@ export class User {
     username: string
     email: string
     role: string
-    description: string
+    description: string | undefined | null
 }

@@ -3,13 +3,14 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {environment} from '../../../environments/environment'
+import { LocalService } from '../local-service/local.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private localStore: LocalService) {
   }
 
   private createBasicAuthToken(email: string, password: string) {
@@ -24,6 +25,7 @@ export class AuthService {
 
   login(user: LoginUser) {
     const token = this.createBasicAuthToken(user.email, user.password)
+    this.localStore.saveData("token", token)
     const httpOptions = {
       headers: new HttpHeaders({
         Authorization: 'Basic ' + token
