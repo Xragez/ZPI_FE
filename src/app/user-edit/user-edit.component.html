@@ -7,7 +7,7 @@
 
           <div class="col-4">
             <p>Zmień swoje dane</p>
-            <form>
+            <form [formGroup]="editForm" (ngSubmit)="updateUserDetails()">
               <div class="mb-3">
                 <label for="user_name" class="form-label">Imie</label>
                 <input type="text" class="form-control" value="Janek">
@@ -17,13 +17,12 @@
                 <input type="text" class="form-control" value="Kowal">
               </div>
               <div class="mb-3">
-                <label for="user_email" class="form-label">Email</label>
-                <input type="email" class="form-control" value="jkowal@gmail.com">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" formControlName="username">
               </div>
               <div class="mb-3">
                 <label for="user_description" class="form-label">Opis</label>
-                <textarea class="form-control" rows="5" >
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi eum aut culpa exercitationem officiis quas tempora quae excepturi harum minima. Suscipit tempora impedit autem soluta nesciunt earum asperiores doloribus cupiditate?
+                <textarea class="form-control" rows="5" formControlName="description">
                 </textarea>
               </div>
               <button type="submit" class="btn btn-primary">Zapisz</button>
