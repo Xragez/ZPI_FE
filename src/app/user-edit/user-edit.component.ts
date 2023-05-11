@@ -58,7 +58,10 @@ export class UserEditComponent implements OnInit{
       this.user.description = this.description?.value;
 
       this.userService.updateUserDetails(this.user).subscribe({
-        next: () => {},
+        next: () => {
+          //TODO
+          //tu dodać kod do wyswietlenia o pomyslnej edycji usera
+        },
         error: () => {}
       })
     }
