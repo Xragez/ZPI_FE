@@ -1,6 +1,56 @@
 <app-navbar></app-navbar>
 
-
+<div class="container-fluid">
+    
 <div class="container main-container">
-    <h1 class="text-center">Tablica z wpisami</h1>
+
+    <div class="links">
+        <div class="btn-group">
+            <a href="#" class="btn ">Tablica</a>
+            <a href="#" class="btn ">Artykułu</a>
+            <a href="#" class="btn ">Galeria</a>
+        </div>
+    </div>
+
+
+
+    <div class="board_form">
+        <form [formGroup]="boardForm">
+            <div class="mb-3">
+                <textarea class="form-control" rows="3" [(ngModel)]="message" formControlName="message" required placeholder = "Udostępnij nowy wpis..."></textarea>
+              </div>
+            <button type="submit" (click)="sharePost()" class="btn btn-primary">Udostępnij</button>
+        </form>
+        
+    </div>
+    
+    <div class="posts">
+
+        <div *ngFor="let msg of messages; let i = index" class="row post_box">
+            <div class="post">
+                <div class="post_content">
+                    <p>{{ msg.message }}</p>
+                </div>
+                <div class="post_author">
+                    <p>{{ msg.author }}</p>
+                </div>
+            </div>  
+            <div class="show_comments">
+                <button (click)="showComments(i)" type="button" class="btn">
+                    {{ msg.showCommentsFlag ? 'Ukryj komentarze' : 'Pokaż komentarze' }}
+                </button>
+            </div>
+            <div *ngFor="let c of msg.comment" class="comments" id="comments" [style.display]="msg.showCommentsFlag ? 'flex' : 'none'">
+                <div class="comment">
+                    <p class="author">{{c.author}}</p>
+                    <p>{{c.content}}</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
 </div>
