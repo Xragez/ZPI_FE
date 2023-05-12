@@ -1,18 +1,8 @@
 <app-navbar></app-navbar>
 
 <div class="container-fluid">
-    
+
 <div class="container main-container">
-
-    <div class="links">
-        <div class="btn-group">
-            <a href="#" class="btn ">Tablica</a>
-            <a href="#" class="btn ">Artykułu</a>
-            <a href="#" class="btn ">Galeria</a>
-        </div>
-    </div>
-
-
 
     <div class="board_form">
         <form [formGroup]="boardForm">
@@ -21,9 +11,9 @@
               </div>
             <button type="submit" (click)="sharePost()" class="btn btn-primary">Udostępnij</button>
         </form>
-        
+
     </div>
-    
+
     <div class="posts">
 
         <div *ngFor="let msg of messages; let i = index" class="row post_box">
@@ -34,7 +24,7 @@
                 <div class="post_author">
                     <p>{{ msg.author }}</p>
                 </div>
-            </div>  
+            </div>
             <div class="show_comments">
                 <button (click)="showComments(i)" type="button" class="btn">
                     {{ msg.showCommentsFlag ? 'Ukryj komentarze' : 'Pokaż komentarze' }}
