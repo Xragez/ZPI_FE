@@ -7,6 +7,9 @@
 
           <div class="col-4">
             <p>Zmień swoje dane</p>
+            <div class="alert alert-success" role="alert" *ngIf="info">
+              {{info}}
+            </div>
             <form [formGroup]="editForm" (ngSubmit)="updateUserDetails()">
               <div class="mb-3">
                 <label for="user_name" class="form-label">Imie</label>

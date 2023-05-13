@@ -52,6 +52,8 @@ export class UserEditComponent implements OnInit{
     return this.editForm.get('description');
   }
 
+  info : string = ''
+
   updateUserDetails() {
     if (this.username?.value) {
       this.user.username = this.username?.value;
@@ -61,6 +63,7 @@ export class UserEditComponent implements OnInit{
         next: () => {
           //TODO
           //tu dodać kod do wyswietlenia o pomyslnej edycji usera
+          this.info = "Zmiany zostały pomyślnie zapisane!" 
         },
         error: () => {}
       })
