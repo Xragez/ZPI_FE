@@ -10,11 +10,11 @@
             <form [formGroup]="editForm" (ngSubmit)="updateUserDetails()">
               <div class="mb-3">
                 <label for="user_name" class="form-label">Imie</label>
-                <input type="text" class="form-control" value="Janek">
+                <input type="text" class="form-control" formControlName="firstName">
               </div>
               <div class="mb-3">
                 <label for="user_surname" class="form-label">Nazwisko</label>
-                <input type="text" class="form-control" value="Kowal">
+                <input type="text" class="form-control" formControlName="lastName">
               </div>
               <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
@@ -32,9 +32,9 @@
             <p>Zmień swoje zdjęcie profilowe</p>
             <form>
               <div class="form-group">
-                <img [src]="url" height="200" class="mb-2">
+                <img [src]="user.avatar" height="500" class="mb-2">
                 <input type="file" (change)="onSelectFile($event)"><br>
-                <button type="submit" class="btn btn-primary mt-3">Zapisz</button>
+                <button type="submit" class="btn btn-primary mt-3" (click)="updateAvatar()">Zapisz</button>
               </div>
             </form>
 
