@@ -12,10 +12,13 @@ export class DashboardHomeComponent implements OnInit{
 
   user: User = {
     id: 0,
-    username: "username",
-    email:"email",
-    role: "USER",
-    description: "brak"
+    username: "",
+    email:"",
+    role: "",
+    description: "",
+    firstName: "",
+    lastName: "",
+    avatar: null
   }
 
   constructor(private localStore: LocalService, private userService: UserService) {
@@ -26,8 +29,8 @@ export class DashboardHomeComponent implements OnInit{
         this.user.email = response.email;
         this.user.role = response.role;
         this.user.description = response.description;
-
-        console.log(response);
+        this.user.firstName = response.firstName;
+        this.user.lastName = response.lastName;
       },
       error: () => {
         
