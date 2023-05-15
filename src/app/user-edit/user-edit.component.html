@@ -7,8 +7,8 @@
 
           <div class="col-4">
             <p>Zmień swoje dane</p>
-            <div class="alert alert-success" role="alert" *ngIf="info">
-              {{info}}
+            <div class="alert alert-success" role="alert" *ngIf="infoEdit">
+              {{infoEdit}}
             </div>
             <form [formGroup]="editForm" (ngSubmit)="updateUserDetails()">
               <div class="mb-3">
@@ -33,9 +33,12 @@
           </div>
           <div class="col-4 add_img">
             <p>Zmień swoje zdjęcie profilowe</p>
+            <div class="alert alert-success" role="alert" *ngIf="infoAvatar">
+              {{infoAvatar}}
+            </div>
             <form>
               <div class="form-group">
-                <img [src]="user.avatar" height="500" class="mb-2">
+                <img [src]="avatarImg" height="500" class="mb-2">
                 <input type="file" (change)="onSelectFile($event)"><br>
                 <button type="submit" class="btn btn-primary mt-3" (click)="updateAvatar()">Zapisz</button>
               </div>

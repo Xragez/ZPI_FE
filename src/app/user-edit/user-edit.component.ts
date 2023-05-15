@@ -21,8 +21,13 @@ export class UserEditComponent implements OnInit{
     lastName: "",
     avatar: null
   }
+
+  avatarImg: any = null
   
   image: any;
+
+  infoEdit : string = ''
+  infoAvatar: string = ''
 
   editForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -47,7 +52,8 @@ export class UserEditComponent implements OnInit{
         this.user.email = response.email;
         this.user.role = response.role;
         this.user.description = response.description;
-        this.user.avatar = 'data:image/jpeg;base64,' + response.avatar;
+        this.user.avatar = response.avatar;
+        this.avatarImg = 'data:image/jpeg;base64,' + this.user.avatar;
       },
       error: () => { }
     });
@@ -69,8 +75,6 @@ export class UserEditComponent implements OnInit{
     return this.editForm.get('description');
   }
 
-  info : string = ''
-
   updateUserDetails() {
     if (this.username?.value) {
       this.user.username = this.username?.value;
@@ -80,9 +84,7 @@ export class UserEditComponent implements OnInit{
 
       this.userService.updateUserDetails(this.user).subscribe({
         next: () => {
-          //TODO
-          //tu dodać kod do wyswietlenia o pomyslnej edycji usera
-          this.info = "Zmiany zostały pomyślnie zapisane!" 
+          this.infoEdit = "Zmiany zostały pomyślnie zapisane!" 
         },
         error: () => {}
       })
@@ -109,8 +111,7 @@ export class UserEditComponent implements OnInit{
       uploadImageData.append('avatar', this.image, this.user.avatar.name);
       this.userService.updateUserAvatar(this.localStore.getData("id"), uploadImageData).subscribe({
         next: () => {
-          //TODO
-          //tu dodać kod do wyswietlenia o pomyslnej edycji avatara
+          this.infoAvatar = "Zdjęcie profilowe zostało pomyślnie zmienione"
         },
         error: () => {}
       })
