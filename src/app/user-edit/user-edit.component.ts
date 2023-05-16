@@ -100,7 +100,7 @@ export class UserEditComponent implements OnInit{
       var reader = new FileReader();
       reader.readAsDataURL(this.image);
       reader.onload = (event: any) => {
-        this.user.avatar  = event.target.result;
+        this.avatarImg  = event.target.result;
       }
     }
   }
@@ -108,7 +108,7 @@ export class UserEditComponent implements OnInit{
   updateAvatar() {
     if (this.user.avatar != null) {
       const uploadImageData = new FormData();
-      uploadImageData.append('avatar', this.image, this.user.avatar.name);
+      uploadImageData.append('avatar', this.image, this.avatarImg.name);
       this.userService.updateUserAvatar(this.localStore.getData("id"), uploadImageData).subscribe({
         next: () => {
           this.infoAvatar = "Zdjęcie profilowe zostało pomyślnie zmienione"
