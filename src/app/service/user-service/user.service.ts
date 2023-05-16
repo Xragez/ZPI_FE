@@ -10,9 +10,7 @@ import { LocalService } from '../local-service/local.service';
   providedIn: 'root'
 })
 export class UserService {
-
-
-  httpOptions = {}
+  private httpOptions = {}
 
   constructor(private http: HttpClient, private localStore: LocalService) {
     const token = this.localStore.getData("token")

@@ -1,5 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import {Router} from "@angular/router";
+import {LocalService} from "../service/local-service/local.service";
+import {PostService} from "../service/post-service/post.service";
 
 @Component({
   selector: 'app-main',
@@ -7,11 +10,21 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit{
+  messages: Post[] = [];
 
-  constructor() {}
+
+  constructor(private router: Router, private localStore: LocalService, private postService: PostService) {
+    postService.getAllPosts().subscribe({
+      next: (response: any) => {
+        console.log(response)
+        this.messages = response.map((post: { content: String; author: String; }) => new Post(post.content, post.author));
+      },
+      error: (err) => {console.log(err)}
+    })
+  }
 
   ngOnInit() {
-    
+
   }
 
   boardForm = new FormGroup({
@@ -29,50 +42,45 @@ export class MainComponent implements OnInit{
     return this.commentForm.get('comment');
   }
 
-
-
-  messages = [
-    { message: 'In elementum, arcu ac commodo pulvinar, eros magna ultrices felis, sed maximus quam ex sed orci. Mauris eget nisi vitae ex molestie imperdiet. In et euismod nisi.', author: 'Jan Kowal', 
-    comment: [
-      {content: 'Nam consectetur, nisi eget hendrerit sagittis, nulla eros finibus dui, non tincidunt risus urna sed purus.', author: 'Jan Nowak'},
-      {content: 'Nam consectetur, nisi eget hendrerit sagittis, nulla eros finibus dui, non tincidunt risus urna sed purus.', author: 'Eryk Nowak'},
-    ], showCommentsFlag: false
-  },
-    { message: 'In elementum, arcu ac commodo pulvinar, eros magna ultrices felis, sed maximus quam ex sed orci. Mauris eget nisi vitae ex molestie imperdiet. In et euismod nisi.', author: 'Jan Kowal', 
-    comment: [
-      {content: 'Mauris eget nisi vitae ex molestie imperdiet.', author: 'Ewa Nowak'},
-    ], showCommentsFlag: false
-  },
-    { message: 'In elementum, arcu ac commodo pulvinar, eros magna ultrices felis, sed maximus quam ex sed orci. Mauris eget nisi vitae ex molestie imperdiet. In et euismod nisi.', author: 'Jan Kowal', }
-  ];
-
-
-
   sharePost() {
 
     if(this.message != ''){
-      this.messages.push({message: this.message, author: 'Autor TEST'});
+      this.postService.saveNewPost(this.message).subscribe({
+        next: (response: any) => {
+          window.location.reload();
+        },
+        error: (err) => {console.log(err)}
+      })
       this.boardForm.reset();
     }
 
   }
 
   shareComments(postIndex: number){
-    
-      const comment = {content: this.newComment?.value, author: 'Autor Test', post_id: postIndex + 1};
-      this.messages[postIndex]?.comment?.push(comment);
-      this.commentForm.reset();
+
+      // const comment = {content: this.newComment?.value, author: 'Autor Test', post_id: postIndex + 1};
+      // this.messages[postIndex]?.comment?.push(comment);
+      // this.commentForm.reset();
 
   }
 
 
-  showCommentsFlag = false;
   showComments( index: number) {
+    // if(this.message?.showCommentsFlag) {
+    //   this.messages[index].showCommentsFlag = !this.messages[index].showCommentsFlag;
+    //
+    // }
+  }
+}
 
-    this.messages[index].showCommentsFlag = !this.messages[index].showCommentsFlag;
-
-
+class Post {
+  constructor(content: String, author: String) {
+    this.content = content;
+    this.author = author;
+    this.showCommentsFlag = false
   }
 
-
+  content: String;
+  author: String;
+  showCommentsFlag: boolean;
 }
