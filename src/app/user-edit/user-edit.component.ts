@@ -94,6 +94,7 @@ export class UserEditComponent implements OnInit{
   ngOnInit() {
   }
 
+
   onSelectFile(e: any) {
     if(e.target.files) {
       this.image = e.target.files[0];
