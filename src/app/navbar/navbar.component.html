@@ -3,7 +3,7 @@
       <a class="navbar-brand text-white">
         <i class="fas fa-camera"></i>
       </a>
-    
+
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <div class="mx-auto"></div>
         <ul class="navbar-nav">
@@ -17,13 +17,13 @@
             <a class="nav-link" href="#">Galeria</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/login">Zaloguj się</a>
+            <div *ngIf="username">
+              <a class="nav-link" routerLink="/user_dashboard">{{username}}</a>
+            </div>
+            <div *ngIf="!username">
+              <a class="nav-link" routerLink="/login">Zaloguj się</a>
+            </div>
           </li>
-          <div class="icon-links">
-              <a class="nav-link px-3" href="/login">
-                <i class="fas fa-user"></i>
-              </a>
-          </div>
         </ul>
       </div>
     </div>

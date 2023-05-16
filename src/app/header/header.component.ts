@@ -12,8 +12,10 @@ export class HeaderComponent implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
   avatar: any;
+  username: String | null;
 
   constructor(private router: Router, private localStore: LocalService, private userService: UserService) {
+    this.username = localStore.getData('username');
     this.userService.getUserByEmail(localStore.getData("email")).subscribe({
       next: (response: any) => {
         this.avatar = 'data:image/jpeg;base64,' + response.avatar;
@@ -23,6 +25,12 @@ export class HeaderComponent implements OnInit {
       }
     })
   }
+
+  logout():void {
+    this.localStore.clearData();
+    this.router.navigate(['/main']);
+  }
+
   ngOnInit(): void {}
 
   toggleSidebar() {

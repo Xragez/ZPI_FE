@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LocalService} from "../service/local-service/local.service";
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  username: String | null;
+  constructor(private localStore: LocalService) {
+    this.username = this.localStore.getData('username');
+  }
 }
