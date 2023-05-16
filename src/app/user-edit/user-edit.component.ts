@@ -113,6 +113,7 @@ export class UserEditComponent implements OnInit{
       this.userService.updateUserAvatar(this.localStore.getData("id"), uploadImageData).subscribe({
         next: () => {
           this.infoAvatar = "Zdjęcie profilowe zostało pomyślnie zmienione"
+          window.location.reload();
         },
         error: () => {}
       })
