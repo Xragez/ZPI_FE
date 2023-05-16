@@ -9,6 +9,8 @@ export class UserDashboardComponent {
   title = 'user-panel-layout';
   sideBarOpen = true;
 
+  constructor() {}
+
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }

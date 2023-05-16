@@ -42,6 +42,7 @@ export class LoginComponent {
           this.localStore.saveData('email', response.email);
           this.localStore.saveData('username', response.username);
           this.localStore.saveData('role', response.role);
+          this.localStore.saveData('id', response.id);
 
           console.log(response);
           this.router.navigate(['/main'])

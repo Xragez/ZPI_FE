@@ -35,4 +35,10 @@ export class UserService {
     }));
   }
 
+  updateUserAvatar(id: string | null, avatar: any) {
+    return this.http.put(`${environment.apiUrl}/users/set_avatar/${id}`, avatar, this.httpOptions).pipe(catchError(() => {
+      return throwError(() => {})
+    }));
+  }
+
 }

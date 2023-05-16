@@ -87,6 +87,7 @@
 
 .comments{
     display: none;
+    flex-direction: column;
     justify-content: flex-end;
 }
 
@@ -103,4 +104,26 @@
     font-size: 15px;
     font-weight: 500;
 
+}
+
+.add_comment{
+    width: 95%;
+    height: 60px;
+    margin-top: 10px;
+}
+
+.add_comment input{
+    width: 90%;
+}
+
+.add_comment button{
+    position: relative;
+    top: -37px;
+    left: 429px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: black;
+    border: none;
+    font-size: 25px;
+    margin-top: -6px;
 }
