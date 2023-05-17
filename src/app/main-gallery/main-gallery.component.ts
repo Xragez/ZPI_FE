@@ -15,7 +15,7 @@ export class MainGalleryComponent implements OnInit{
   openDialog(index: number){
     this.dialogRef.open(PhotoModalComponent, {
       data : {
-        photo : this.masonryImages[index]
+        photo : this.images[index]
       }
     });
   }
@@ -28,7 +28,10 @@ export class MainGalleryComponent implements OnInit{
 		fitWidth: true
 	};
 
-  masonryImages = [
+
+    limit = 12;
+    masonryImages: any;
+    images = [
     {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak'},
     {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak'},
     {picture: './assets/img/photos/3.jpg', author: 'Jan Nowak'},
@@ -47,12 +50,21 @@ export class MainGalleryComponent implements OnInit{
     {picture: './assets/img/photos/7.jpg', author: 'Anna Kowal'},
     {picture: './assets/img/photos/8.jpg', author: 'Jan Nowak'},
     {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak'},
+
   ]
-  limit = 15;
+  
 
   ngOnInit() {
-		this.masonryImages.slice(0, this.limit);
+		
 	}
 
-
+  showMoreImages() {
+		this.limit += 8;
+		this.masonryImages = this.images.slice(0, this.limit);
+	}
 }

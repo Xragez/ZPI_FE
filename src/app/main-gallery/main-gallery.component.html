@@ -6,7 +6,7 @@
 
     <div class="gallery">
         <ngx-masonry [options]="masonryOptions" [ordered]="true">
-            <div ngxMasonryItem class="masonry-item"  *ngFor="let picture of masonryImages; let i = index" class="box" (click)="openDialog(i)">
+            <div ngxMasonryItem  *ngFor="let picture of images.slice(0, this.limit); let i = index" class="box" (click)="openDialog(i)">
                 <div class="imgBx" >
                     <img src="{{picture.picture}}">
                 </div>
@@ -16,7 +16,8 @@
             </div>
           </ngx-masonry>
     </div>
-
+    <button *ngIf="limit < 100" (click)="showMoreImages()">Show More Images</button>
+    <h2 *ngIf="limit >= 100">No More Images</h2>
 </div>
 </div>
 
