@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+
+<div class="container main-container">
+
+    <div class="gallery">
+        <ngx-masonry [options]="masonryOptions" [ordered]="true">
+            <div ngxMasonryItem class="masonry-item"  *ngFor="let picture of masonryImages; let i = index" class="box" (click)="openDialog(i)">
+                <div class="imgBx" >
+                    <img src="{{picture.picture}}">
+                </div>
+                <div class="content">
+                    <h2>{{picture.author}}</h2>
+                </div>
+            </div>
+          </ngx-masonry>
+    </div>
+
+</div>
+</div>
+

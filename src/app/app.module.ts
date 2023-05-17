@@ -7,7 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './main/main.component';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -22,7 +22,9 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { UserGalleryComponent } from './user-gallery/user-gallery.component';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { UserEditComponent } from './user-edit/user-edit.component';
-
+import { MainGalleryComponent } from './main-gallery/main-gallery.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PhotoModalComponent } from './photo-modal/photo-modal.component'
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     DashboardHomeComponent,
     UserGalleryComponent,
     UserEditComponent,
+    MainGalleryComponent,
+    PhotoModalComponent,
   ],
   
   imports: [
@@ -52,7 +56,8 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     MatDividerModule,
     MatListModule,
     NgxMasonryModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,8 @@
+.photo{
+    padding: 30px;
+}
+
+.photo img{
+    height: 500px;
+    width: auto;
+}

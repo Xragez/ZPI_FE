@@ -7,10 +7,12 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { UserGalleryComponent } from './user-gallery/user-gallery.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { MainGalleryComponent } from './main-gallery/main-gallery.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/main', pathMatch: 'full' },
   {path: 'main', component: MainComponent },
+  {path: 'gallery', component: MainGalleryComponent },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'user_dashboard', component: UserDashboardComponent,
