@@ -3,6 +3,7 @@ import { NgxMasonryOptions } from 'ngx-masonry';
 import { MatDialog } from '@angular/material/dialog';
 import { PhotoModalComponent } from '../photo-modal/photo-modal.component';
 
+
 @Component({
   selector: 'app-main-gallery',
   templateUrl: './main-gallery.component.html',
@@ -10,7 +11,7 @@ import { PhotoModalComponent } from '../photo-modal/photo-modal.component';
 })
 export class MainGalleryComponent implements OnInit{
 
-  constructor(private dialogRef: MatDialog){}
+  constructor(private dialogRef: MatDialog,){}
 
   openDialog(index: number){
     this.dialogRef.open(PhotoModalComponent, {
@@ -29,7 +30,7 @@ export class MainGalleryComponent implements OnInit{
 	};
 
 
-    limit = 12;
+    limit = 17;
     masonryImages: any;
     images = [
     {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak'},
@@ -55,16 +56,46 @@ export class MainGalleryComponent implements OnInit{
     {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak'},
     {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal'},
     {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak'},
-
+    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/5.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/6.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/7.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/8.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/5.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/6.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/7.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/8.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal'},
+    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak'},
   ]
   
 
   ngOnInit() {
 		
 	}
+  
+  images_length = this.images.length;
 
   showMoreImages() {
-		this.limit += 8;
-		this.masonryImages = this.images.slice(0, this.limit);
+    
+    setTimeout(() =>{
+      this.limit += 10;
+		  this.masonryImages = this.images.slice(0, this.limit);
+    },200)
+
+    console.log(this.limit)
 	}
 }

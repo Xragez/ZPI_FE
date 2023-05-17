@@ -25,6 +25,8 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { MainGalleryComponent } from './main-gallery/main-gallery.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PhotoModalComponent } from './photo-modal/photo-modal.component'
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { PhotoModalComponent } from './photo-modal/photo-modal.component'
     MatListModule,
     NgxMasonryModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    InfiniteScrollModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

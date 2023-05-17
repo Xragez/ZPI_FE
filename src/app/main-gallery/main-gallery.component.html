@@ -4,7 +4,12 @@
 
 <div class="container main-container">
 
-    <div class="gallery">
+    <div class="gallery" 
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="1000"
+        (scrolled)="showMoreImages()"
+        >
         <ngx-masonry [options]="masonryOptions" [ordered]="true">
             <div ngxMasonryItem  *ngFor="let picture of images.slice(0, this.limit); let i = index" class="box" (click)="openDialog(i)">
                 <div class="imgBx" >
@@ -16,8 +21,11 @@
             </div>
           </ngx-masonry>
     </div>
-    <button *ngIf="limit < 100" (click)="showMoreImages()">Show More Images</button>
-    <h2 *ngIf="limit >= 100">No More Images</h2>
+    <div class="spinner text-center">
+        <mat-spinner *ngIf="limit < images_length"></mat-spinner>
+        <h2 *ngIf="limit >= images_length">Brak zdjęć</h2>
+    </div>
+    
 </div>
 </div>
 
