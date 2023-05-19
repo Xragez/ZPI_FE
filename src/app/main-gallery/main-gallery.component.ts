@@ -13,6 +13,10 @@ export class MainGalleryComponent implements OnInit{
 
   constructor(private dialogRef: MatDialog,){}
 
+  ngOnInit() {
+		
+	}
+
   openDialog(index: number){
     this.dialogRef.open(PhotoModalComponent, {
       data : {
@@ -83,10 +87,6 @@ export class MainGalleryComponent implements OnInit{
   ]
   
 
-  ngOnInit() {
-		
-	}
-  
   images_length = this.images.length;
 
   showMoreImages() {
@@ -98,4 +98,13 @@ export class MainGalleryComponent implements OnInit{
 
     console.log(this.limit)
 	}
+
+
+  categories = [
+    {id: 1, name: 'Portret'},
+    {id: 2, name: 'Miasto'},
+    {id: 3, name: 'Przyroda'},
+    {id: 4, name: 'Noc'}
+  ]
+
 }

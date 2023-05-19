@@ -2,7 +2,20 @@
 
 <div class="container-fluid">
 
+    
+
 <div class="container main-container">
+
+    <div class="select_div">
+        <h3>Filtruj po kategoriach</h3>
+        <select class="form-select">
+            <option *ngFor="let category of categories" [ngValue]="category.id">
+                {{category.name}}
+            </option>
+        </select>
+    </div>
+
+
 
     <div class="gallery" 
         infiniteScroll
