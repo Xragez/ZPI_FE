@@ -94,3 +94,14 @@ mat-spinner{
     margin-bottom: 2px;
     margin-left: 2px;
 }
+
+.btn-outline-secondary{
+    border-color: black !important;
+    color: black !important;
+
+}
+
+.btn-outline-secondary:hover{
+    background-color: #000;
+    color: white !important;
+}

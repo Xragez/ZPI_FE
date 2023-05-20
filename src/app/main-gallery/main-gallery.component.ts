@@ -9,12 +9,14 @@ import { PhotoModalComponent } from '../photo-modal/photo-modal.component';
   templateUrl: './main-gallery.component.html',
   styleUrls: ['./main-gallery.component.css']
 })
+
+
 export class MainGalleryComponent implements OnInit{
 
   constructor(private dialogRef: MatDialog,){}
 
   ngOnInit() {
-		
+		this.filterImages();
 	}
 
   openDialog(index: number){
@@ -37,67 +39,91 @@ export class MainGalleryComponent implements OnInit{
     limit = 17;
     masonryImages: any;
     images = [
-    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/3.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/4.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/5.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/6.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/7.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/8.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/5.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/6.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/7.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/8.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/5.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/6.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/7.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/8.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/5.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/6.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/7.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/8.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak'},
-    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal'},
-    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak'},
+    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak', category: 2},
+    {picture: './assets/img/photos/3.jpg', author: 'Jan Nowak', category: 3},
+    {picture: './assets/img/photos/4.jpg', author: 'Anna Kowal', category: 4},
+    {picture: './assets/img/photos/5.jpg', author: 'Jan Nowak', category: 4},
+    {picture: './assets/img/photos/6.jpg', author: 'Anna Kowal', category: 3},
+    {picture: './assets/img/photos/7.jpg', author: 'Jan Nowak', category: 2},
+    {picture: './assets/img/photos/8.jpg', author: 'Jan Nowak', category: 3},
+    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal', category: 4},
+    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal', category: 2},
+    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/5.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak', category: 2},
+    {picture: './assets/img/photos/3.jpg', author: 'Jan Nowak', category: 3},
+    {picture: './assets/img/photos/4.jpg', author: 'Anna Kowal', category: 4},
+    {picture: './assets/img/photos/5.jpg', author: 'Jan Nowak', category: 4},
+    {picture: './assets/img/photos/6.jpg', author: 'Anna Kowal', category: 3},
+    {picture: './assets/img/photos/7.jpg', author: 'Jan Nowak', category: 2},
+    {picture: './assets/img/photos/8.jpg', author: 'Jan Nowak', category: 3},
+    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal', category: 4},
+    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal', category: 2},
+    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/5.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak', category: 2},
+    {picture: './assets/img/photos/3.jpg', author: 'Jan Nowak', category: 3},
+    {picture: './assets/img/photos/4.jpg', author: 'Anna Kowal', category: 4},
+    {picture: './assets/img/photos/5.jpg', author: 'Jan Nowak', category: 4},
+    {picture: './assets/img/photos/6.jpg', author: 'Anna Kowal', category: 3},
+    {picture: './assets/img/photos/7.jpg', author: 'Jan Nowak', category: 2},
+    {picture: './assets/img/photos/8.jpg', author: 'Jan Nowak', category: 3},
+    {picture: './assets/img/photos/9.jpg', author: 'Anna Kowal', category: 4},
+    {picture: './assets/img/photos/1.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/2.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/3.jpg', author: 'Anna Kowal', category: 2},
+    {picture: './assets/img/photos/4.jpg', author: 'Jan Nowak', category: 1},
+    {picture: './assets/img/photos/5.jpg', author: 'Jan Nowak', category: 1},
   ]
   
 
   images_length = this.images.length;
 
   showMoreImages() {
+    if(this.selectedCategory != null){
+      this.filterImages();
+    }
+    else{
+      setTimeout(() =>{
+        this.limit += 10;
+        this.masonryImages = this.images.slice(0, this.limit);
+      },200)
+    }
     
-    setTimeout(() =>{
-      this.limit += 10;
-		  this.masonryImages = this.images.slice(0, this.limit);
-    },200)
-
-    console.log(this.limit)
 	}
+
+
+  selectedCategory: number | null = null;
+  showSpinnerFlag: boolean = true;
+ 
+  filterImages() {
+    if (this.selectedCategory) {
+      this.masonryImages = this.images.filter(image => image.category === this.selectedCategory);
+      this.showSpinnerFlag = false;
+    } else {
+      this.masonryImages = this.images;
+    }
+  }
+
+  
+  handleSelection(event: any) {
+    this.filterImages();
+    console.log(this.selectedCategory)
+  }
+
+  showAll(){
+    this.selectedCategory = null;
+    this.showSpinnerFlag = true;
+    this.limit += 10;
+    this.masonryImages = this.images.slice(0, this.limit);
+  }
 
 
   categories = [
