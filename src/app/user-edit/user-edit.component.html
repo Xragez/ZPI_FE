@@ -1,72 +1,90 @@
 <div class="container-fluid page">
-    <div class="d-flex page_box p-3 mt-2">Edytuj swoje dane</div>
-    <div class="page_content shadow p-3">
-      <div class="page_content-data">
+  <div class="d-flex page_box p-3 mt-2">Edytuj swoje dane</div>
+  <div class="page_content shadow p-3">
+    <div class="page_content-data">
+      
+      <div class="row edit_conatiner">
+
+        <div class="col-4">
+          <p>Zmień swoje dane</p>
+          <div class="alert alert-success" role="alert" *ngIf="infoEdit">
+            {{infoEdit}}
+          </div>
+          <form [formGroup]="editForm" (ngSubmit)="updateUserDetails()">
+            <div class="mb-3">
+              <label for="user_name" class="form-label">Imie</label>
+              <input type="text" class="form-control" formControlName="firstName">
+            </div>
+            <div class="mb-3">
+              <label for="user_surname" class="form-label">Nazwisko</label>
+              <input type="text" class="form-control" formControlName="lastName">
+            </div>
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" formControlName="username">
+            </div>
+            <div class="mb-3">
+              <label for="user_description" class="form-label">Opis</label>
+              <textarea class="form-control" rows="5" formControlName="description">
+              </textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+          </form>
+        </div>
+        <div class="col-4 add_img">
+          <p>Zmień swoje zdjęcie profilowe</p>
+          <div class="alert alert-success" role="alert" *ngIf="infoAvatar">
+            {{infoAvatar}}
+          </div>
+          <form>
+            <div class="form-group">
+              <img [src]="avatarImg" height="500" class="mb-2">
+              <input type="file" (change)="onSelectFile($event)"><br>
+              <button type="submit" class="btn btn-primary mt-3" (click)="updateAvatar()">Zapisz</button>
+            </div>
+          </form>
+
+        </div>
         
-        <div class="row edit_conatiner">
-
-          <div class="col-4">
-            <p>Zmień swoje dane</p>
-            <div class="alert alert-success" role="alert" *ngIf="infoEdit">
-              {{infoEdit}}
-            </div>
-            <form [formGroup]="editForm" (ngSubmit)="updateUserDetails()">
-              <div class="mb-3">
-                <label for="user_name" class="form-label">Imie</label>
-                <input type="text" class="form-control" formControlName="firstName">
-              </div>
-              <div class="mb-3">
-                <label for="user_surname" class="form-label">Nazwisko</label>
-                <input type="text" class="form-control" formControlName="lastName">
-              </div>
-              <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" formControlName="username">
-              </div>
-              <div class="mb-3">
-                <label for="user_description" class="form-label">Opis</label>
-                <textarea class="form-control" rows="5" formControlName="description">
-                </textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Zapisz</button>
-            </form>
+        <div class="col-2">
+          <p>Zmień hasło</p>
+          <div class="alert alert-success" role="alert" *ngIf="infoPassword">
+            {{infoPassword}}
           </div>
-          <div class="col-4 add_img">
-            <p>Zmień swoje zdjęcie profilowe</p>
-            <div class="alert alert-success" role="alert" *ngIf="infoAvatar">
-              {{infoAvatar}}
-            </div>
-            <form>
-              <div class="form-group">
-                <img [src]="avatarImg" height="500" class="mb-2">
-                <input type="file" (change)="onSelectFile($event)"><br>
-                <button type="submit" class="btn btn-primary mt-3" (click)="updateAvatar()">Zapisz</button>
-              </div>
-            </form>
-
+          <div class="alert alert-danger" role="alert" *ngIf="passwordErrorMsg">
+            {{passwordErrorMsg}}
           </div>
-          
-          <!-- <div class="col-2">
-            <p>Zmień hasło</p>
-            <form>
-              <div class="mb-3">
-                <label class="form-label">Aktualne hasło</label>
-                <input type="password" class="form-control">
+          <form [formGroup]="editForm" (ngSubmit)="updateUserPassword()">
+            <div class="mb-3">
+              <label class="form-label">Aktualne hasło</label>
+              <input type="password" class="form-control" formControlName="currentPassword">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nowe hasło</label>
+              <input type="password" class="form-control" formControlName="newPassword">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Powtórz hasło</label>
+              <input type="password" class="form-control" formControlName="checkNewPassword">
+            </div>
+            <div *ngIf="(newPassword && newPassword.touched) || (checkNewPassword && checkNewPassword.touched)">
+              <div *ngIf="newPassword && newPassword.invalid">
+                <div class="alert alert-danger" role="alert" >
+                  Hasło powinno mieć minimum 8 znaków.
+                </div>
               </div>
-              <div class="mb-3">
-                <label class="form-label">Nowe hasło</label>
-                <input type="password" class="form-control">
+              <div *ngIf="editForm.errors?.['passwordMismatchError'] && checkNewPassword && checkNewPassword.touched">
+                <div class="alert alert-danger" role="alert" >
+                  Hasła nie są takie same!
+                </div>
               </div>
-              <div class="mb-3">
-                <label class="form-label">Powtórz hasło</label>
-                <input type="password" class="form-control">
-              </div>
-              <button type="submit" class="btn btn-primary">Zapisz</button>
-            </form>
-          </div> -->
-
+            </div>
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+          </form>
         </div>
 
       </div>
+
     </div>
   </div>
+</div>

@@ -21,6 +21,15 @@ export class UserService {
     }
   }
 
+  updateToken() {
+    const token = this.localStore.getData("token")
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Basic ' + token
+      })
+    }
+  }
+
   getUserByEmail(email: string | null) {
     return this.http.get(`${environment.apiUrl}/users/${email}`, this.httpOptions).pipe(catchError(() => {
       return throwError(()=>{});
@@ -39,4 +48,15 @@ export class UserService {
     }));
   }
 
+  checkPassword(id: string | null, password: string) {
+    return this.http.post(`${environment.apiUrl}/users/validate_password/${id}`, password, this.httpOptions).pipe(catchError(() => {
+      return throwError(() => {})
+    }));
+  }
+
+  updatePassword(id: string | null, newPassword: string) {
+    return this.http.put(`${environment.apiUrl}/users/password_change/${id}`, newPassword, this.httpOptions).pipe(catchError(() => {
+      return throwError(() => {})
+    }));
+  }
 }

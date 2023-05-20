@@ -3,6 +3,8 @@ import {LocalService} from "../service/local-service/local.service";
 import { User } from '../model/user';
 import { UserService } from '../service/user-service/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {AuthService, LoginUser} from "../service/auth-service/auth.service";
+import { passwordMatch } from 'src/validators/passwordMatch';
 
 @Component({
   selector: 'app-user-edit',
@@ -28,23 +30,31 @@ export class UserEditComponent implements OnInit{
 
   infoEdit : string = ''
   infoAvatar: string = ''
+  infoPassword: string = ''
+  passwordErrorMsg: string = ''
 
   editForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     username: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required)
-  })
+    description: new FormControl('', Validators.required),
+    currentPassword: new FormControl('', [Validators.required, Validators.minLength(8),]),
+    newPassword: new FormControl('', [Validators.required, Validators.minLength(8),]),
+    checkNewPassword: new FormControl('', [Validators.required, Validators.minLength(8),]),
+  }, [passwordMatch("newPassword", "checkNewPassword")])
 
 
-  constructor(private localStore: LocalService, private userService: UserService) {
+  constructor(private localStore: LocalService, private userService: UserService, private authService: AuthService,) {
     this.userService.getUserByEmail(this.localStore.getData("email")).subscribe({
       next: (response: any) => {
         this.editForm.setValue({
           firstName: response.firstName + "",
           lastName: response.lastName + "",
           username: response.username + "",
-          description: response.description + ""
+          description: response.description + "",
+          currentPassword: "",
+          newPassword: "",
+          checkNewPassword: ""
         });
 
         this.user.id = response.id;
@@ -73,6 +83,16 @@ export class UserEditComponent implements OnInit{
 
   get description(){
     return this.editForm.get('description');
+  }
+
+  get currentPassword(){
+    return this.editForm.get('currentPassword');
+  }
+  get newPassword(){
+    return this.editForm.get('newPassword');
+  }
+  get checkNewPassword(){
+    return this.editForm.get('checkNewPassword');
   }
 
   updateUserDetails() {
@@ -118,5 +138,33 @@ export class UserEditComponent implements OnInit{
         error: () => {}
       })
     }
+  }
+
+  updateUserPassword() {
+    let password = this.currentPassword?.value + ""
+    let newPassword = this.newPassword?.value + "";
+    this.passwordErrorMsg = "";
+    this.infoPassword = "";
+    let loginUser: LoginUser = {
+      email: this.user.email,
+      password: password
+    }
+    this.authService.login(loginUser).subscribe({
+      next: () => {
+        this.userService.updatePassword(this.localStore.getData("id"), newPassword).subscribe({
+          next: () => {
+            this.infoPassword = "Hasło zostało pomyślnie zmienione"
+            loginUser.password = newPassword;
+            this.authService.login(loginUser);
+            this.userService.updateToken();
+          },
+          error: () => {}
+        })
+      }, 
+      error: () => {
+        this.passwordErrorMsg = "Podane hasło jest nieprawidłowe";
+      }
+    })
+    
   }
 }
