@@ -25,31 +25,31 @@
                     <p>{{ msg.author }}</p>
                 </div>
             </div>
-<!--            <div class="show_comments">-->
-<!--                <button (click)="showComments(i)" type="button" class="btn">-->
-<!--                    {{ msg.showCommentsFlag ? 'Ukryj komentarze' : 'Pokaż komentarze' }}-->
-<!--                </button>-->
-<!--            </div>-->
+           <!-- <div class="show_comments">
+               <button (click)="showComments(i)" type="button" class="btn">
+                   {{ msg.showCommentsFlag ? 'Ukryj komentarze' : 'Pokaż komentarze' }}
+               </button>
+           </div>
 
-<!--            <div class="comments" id="comments" [style.display]="msg.showCommentsFlag ? 'flex' : 'none'">-->
-<!--                <div class="add_comment">-->
-<!--                  <form [formGroup]="commentForm">-->
-<!--                    <div class="mb-3">-->
-<!--                      <input type="text" class="form-control" placeholder="Dodaj komentarz..." formControlName="comment">-->
-<!--                      <button type="submit" class="btn btn-primary" (click)="shareComments(i)">-->
-<!--                        <i class="fa-solid fa-arrow-right"></i>-->
-<!--                      </button>-->
-<!--                    </div>-->
-<!--                  </form>-->
-<!--                </div>-->
-<!--                <div *ngFor="let c of msg.comment">-->
-<!--                  <div class="comment">-->
-<!--                    <p class="author">{{c.author}}</p>-->
-<!--                    <p>{{c.content}}</p>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--            </div>-->
-        </div>
+           <div class="comments" id="comments" [style.display]="msg.showCommentsFlag ? 'flex' : 'none'">
+               <div class="add_comment">
+                 <form [formGroup]="commentForm">
+                   <div class="mb-3">
+                     <input type="text" class="form-control" placeholder="Dodaj komentarz..." formControlName="comment">
+                     <button type="submit" class="btn btn-primary" (click)="shareComments(i)">
+                       <i class="fa-solid fa-arrow-right"></i>
+                     </button>
+                   </div>
+                 </form>
+               </div>
+               <div *ngFor="let c of msg.comment">
+                 <div class="comment">
+                   <p class="author">{{c.author}}</p>
+                   <p>{{c.content}}</p>
+                 </div>
+               </div>
+           </div>
+        </div> -->
 
     </div>
 
