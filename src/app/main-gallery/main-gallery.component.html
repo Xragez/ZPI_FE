@@ -36,8 +36,8 @@
           </ngx-masonry>
     </div>
     <div class="spinner text-center" *ngIf="showSpinnerFlag">
-        <mat-spinner *ngIf="limit < images_length"></mat-spinner>
-        <h2 *ngIf="limit >= images_length">Brak zdjęć</h2>
+        <mat-spinner *ngIf="limit < images.length"></mat-spinner>
+        <h2 *ngIf="limit >= images.length">Brak zdjęć</h2>
     </div>
     
 </div>
