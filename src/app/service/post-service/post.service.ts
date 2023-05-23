@@ -31,4 +31,17 @@ export class PostService {
       return throwError(()=>{});
     }));
   }
+
+  addComment(content: String, postId: number) {
+    return this.http.post(`${environment.apiUrl}/posts/add_comment`, {content, postId}, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
+
+  getComments(postId: number) {
+    return this.http.get(`${environment.apiUrl}/posts/get_comments/${postId}`, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
+
 }

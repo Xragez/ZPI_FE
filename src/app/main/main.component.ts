@@ -17,7 +17,7 @@ export class MainComponent implements OnInit{
     postService.getAllPosts().subscribe({
       next: (response: any) => {
         console.log(response)
-        this.messages = response.map((post: { content: String; author: String; }) => new Post(post.content, post.author));
+        this.messages = response.map((post: { content: String; author: String; id: number}) => new Post(post.content, post.author, post.id));
       },
       error: (err) => {console.log(err)}
     })
@@ -56,31 +56,62 @@ export class MainComponent implements OnInit{
 
   }
 
-  shareComments(postIndex: number){
-
-      // const comment = {content: this.newComment?.value, author: 'Autor Test', post_id: postIndex + 1};
-      // this.messages[postIndex]?.comment?.push(comment);
-      // this.commentForm.reset();
+  addComments(msg: Post){
+    console.log(msg)
+    const content = this.newComment?.value;
+    const postId = msg.id;
+    this.postService.addComment(content, postId).subscribe({
+      next: (response: any) => {
+        this.getComments(msg)
+      },
+      error: (err) => {console.log(err)}
+    })
+    this.commentForm.reset();
 
   }
 
 
-  showComments( index: number) {
-    // if(this.message?.showCommentsFlag) {
-    //   this.messages[index].showCommentsFlag = !this.messages[index].showCommentsFlag;
-    //
-    // }
+  showComments(post: Post) {
+    post.showCommentsFlag = !post.showCommentsFlag;
+    if(post.showCommentsFlag) {
+      this.getComments(post);
+    }
+  }
+
+  getComments(post: Post) {
+    this.postService.getComments(post.id).subscribe({
+      next: (response: any) => {
+        post.comments = response.map((comment: { content: String; username: String; }) => new Comment(comment.content, comment.username));
+        console.log(post.comments)
+      },
+      error: (err) => {console.log(err)}
+    })
   }
 }
 
+
 class Post {
-  constructor(content: String, author: String) {
+  constructor(content: String, author: String, id: number) {
+    this.id = id
     this.content = content;
     this.author = author;
     this.showCommentsFlag = false
+    this.comments = [];
+  }
+
+  id: number
+  content: String;
+  author: String;
+  showCommentsFlag: boolean;
+  comments: Comment[];
+}
+
+class Comment {
+  constructor(content: String, author: String) {
+    this.content = content;
+    this.author = author;
   }
 
   content: String;
   author: String;
-  showCommentsFlag: boolean;
 }
