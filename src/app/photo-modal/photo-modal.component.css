@@ -1,8 +1,69 @@
+.con_photo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 600px;
+}
+
 .photo{
-    padding: 30px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    padding: 40px;
 }
 
 .photo img{
     height: 500px;
     width: auto;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.comments {
+    padding: 30px;
+    width: 380px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.add_comment{
+    width: 95%;
+    height: 60px;
+    margin-top: 10px;
+}
+
+
+.add_comment input{
+    width: 90%;
+}
+
+.add_comment button{
+    position: relative;
+    top: -37px;
+    left: 280px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: black;
+    border: none;
+    font-size: 25px;
+    margin-top: -6px;
+}
+
+.show_comment{
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.comment{
+    width: 99%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color:rgb(247, 249, 252);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+.comment .author{
+    font-size: 15px;
+    font-weight: 500;
+
 }

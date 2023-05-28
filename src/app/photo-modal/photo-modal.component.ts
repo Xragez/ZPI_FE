@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -13,8 +14,22 @@ export class PhotoModalComponent implements OnInit{
     this.photo = data.photo;
   }
 
-
   ngOnInit() {
     
   }
+
+  commentForm = new FormGroup({
+    comment: new FormControl(),
+  })
+
+  get newComment() {
+    return this.commentForm.get('comment');
+  }
+
+
+  addComments(id: number) {
+    //dodac obsługe
+  }
+
+  
 }

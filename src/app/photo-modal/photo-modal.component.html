@@ -1,5 +1,28 @@
 
 
-<div class="container photo">
-    <img src='{{ photo.picture }}'>
+<div class="container con_photo">
+    <div class="photo">
+        <img src='{{ photo.picture }}'>
+    </div>
+    <div class="comments">
+        <div class="add_comment">
+            <form [formGroup]="commentForm">
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Dodaj komentarz..." formControlName="comment">
+                <button type="submit" class="btn btn-primary" (click)="addComments(photo.id)">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="show_comment">
+                <div class="comment">
+                    <p class="author">Autor</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit recusandae nesciunt doloremque quam aut, cupiditate rerum ad ex.</p>
+              </div>
+        
+          </div>
+
+    </div>
+
 </div>
