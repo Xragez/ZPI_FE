@@ -5,9 +5,9 @@
         <img src='{{ photo.picture }}'>
         <div class="rating">
           <ng-container *ngFor="let i of stars">
-            <i class="fa-solid fa-star" (click)="updateRating(i)" [ngClass]="{'active': i <= rating}"></i>
+            <i class="fa-solid fa-star" (click)="updateRating(i)" [ngClass]="{'active': i <= rate}"></i>
           </ng-container>
-          <p>Ocena: {{rating}}</p>
+          <p>Ocena: {{avarageRating()}}</p>
         </div>
 
     </div>
