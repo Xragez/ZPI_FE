@@ -7,15 +7,32 @@
 
 .photo{
     display: flex; 
-    justify-content: center; 
-    align-items: center;
+    flex-direction: column;
     padding: 40px;
 }
 
 .photo img{
+    justify-content: center; 
+    align-items: center;
     height: 500px;
     width: auto;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.rating{
+    margin-top: 5px;
+    gap: 5px;
+
+}
+
+.rating i {
+    color: #8080806b;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.rating .active {
+    color: orange;
 }
 
 .comments {

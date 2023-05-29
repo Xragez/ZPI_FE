@@ -3,6 +3,13 @@
 <div class="container con_photo">
     <div class="photo">
         <img src='{{ photo.picture }}'>
+        <div class="rating">
+          <ng-container *ngFor="let i of stars">
+            <i class="fa-solid fa-star" (click)="updateRating(i)" [ngClass]="{'active': i <= rating}"></i>
+          </ng-container>
+          <p>Ocena: {{rating}}</p>
+        </div>
+
     </div>
     <div class="comments">
         <div class="add_comment">

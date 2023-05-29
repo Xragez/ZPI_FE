@@ -32,4 +32,11 @@ export class PhotoModalComponent implements OnInit{
   }
 
   
+  stars = [1,2,3,4,5];
+  rating=3;
+
+  updateRating(r: any){
+    this.rating = r
+    console.log(this.rating)
+  }
 }
