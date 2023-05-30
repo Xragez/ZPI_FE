@@ -37,10 +37,13 @@ export class DragAndDropComponent /*implements OnInit*/ {
   }
 
   upload(): void {
-
     const uploadImageData = new FormData();
     uploadImageData.append('image', this.file, this.file.name);
-    this.galleryService.saveImage(7, 2, "123", uploadImageData).subscribe({
+    // TODO dodać user id, category id i opis jako zmienne z formularza
+    let user_id = 7;
+    let category_id = 2;
+    let description = "123";
+    this.galleryService.saveImage(user_id, category_id, description, uploadImageData).subscribe({
       next: (response: any) => {
         console.log("good");
         this.file = null;
