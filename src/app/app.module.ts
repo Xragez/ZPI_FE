@@ -26,7 +26,9 @@ import { MainGalleryComponent } from './main-gallery/main-gallery.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PhotoModalComponent } from './photo-modal/photo-modal.component'
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
+import { DndDirective } from './directives/dnd.directive';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
     UserEditComponent,
     MainGalleryComponent,
     PhotoModalComponent,
+    DragAndDropComponent,
+    DndDirective,
   ],
   
   imports: [

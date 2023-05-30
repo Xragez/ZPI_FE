@@ -25,4 +25,10 @@ export class GalleryService {
       return throwError(() => {})
     }));
   }
+
+  saveImage(userId: number, category: number, description: any, image: any) {
+    return this.http.post(`${environment.apiUrl}/images/newImage/${userId}/${category}/${description}`, image, this.httpOptions).pipe(catchError(() => {
+      return throwError(() => {})
+    }));
+  }
 }
