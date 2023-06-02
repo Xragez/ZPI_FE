@@ -31,4 +31,21 @@ export class GalleryService {
       return throwError(() => {})
     }));
   }
+
+  addRating(userId: any, imageId: any, rating: any) {
+    var body = {
+      ownerId: userId,
+      imageId: imageId,
+      rating: rating,
+    }
+    return this.http.put(`${environment.apiUrl}/images/add_rating`, body, this.httpOptions).pipe(catchError(() => {
+      return throwError(() => {})
+    }));
+  }
+
+  getImageById(id: any) {
+    return this.http.get(`${environment.apiUrl}/images/imagedata/${id}`, this.httpOptions).pipe(catchError(() => {
+      return throwError(() => {})
+    }));
+  }
 }

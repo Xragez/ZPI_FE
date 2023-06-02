@@ -7,7 +7,7 @@
           <ng-container *ngFor="let i of stars">
             <i class="fa-solid fa-star" (click)="updateRating(i)" [ngClass]="{'active': i <= rate}"></i>
           </ng-container>
-          <p>Ocena: {{avarageRating()}}</p>
+          <p>Ocena: {{rating}}</p>
         </div>
 
     </div>
