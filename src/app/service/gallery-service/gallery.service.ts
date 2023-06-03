@@ -48,4 +48,16 @@ export class GalleryService {
       return throwError(() => {})
     }));
   }
+
+  addComment(content: String, imageId: number) {
+    return this.http.post(`${environment.apiUrl}/images/add_comment`, {content, imageId}, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
+
+  getComments(imageId: number) {
+    return this.http.get(`${environment.apiUrl}/images/get_comments/${imageId}`, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
 }

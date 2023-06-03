@@ -16,18 +16,17 @@
             <form [formGroup]="commentForm">
               <div class="mb-3">
                 <input type="text" class="form-control" placeholder="Dodaj komentarz..." formControlName="comment">
-                <button type="submit" class="btn btn-primary" (click)="addComments(photo.id)">
+                <button type="submit" class="btn btn-primary" (click)="addComments()">
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </form>
           </div>
-          <div class="show_comment">
-                <div class="comment">
-                    <p class="author">Autor</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit recusandae nesciunt doloremque quam aut, cupiditate rerum ad ex.</p>
-              </div>
-        
+          <div *ngFor="let c of comments">
+            <div class="comment">
+              <p class="author">{{c.author}}</p>
+              <p>{{c.content}}</p>
+            </div>
           </div>
 
     </div>

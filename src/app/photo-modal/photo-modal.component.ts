@@ -12,12 +12,14 @@ export class PhotoModalComponent implements OnInit{
 
   photo: any;
   rating: any;
+  comments: Comment[] = [];
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private galleryService: GalleryService) {
     console.log(data)
     this.photo = data.photo
     this.rating = this.photo.rating
+    this.getComments()
   }
 
   ngOnInit() {
@@ -32,9 +34,25 @@ export class PhotoModalComponent implements OnInit{
     return this.commentForm.get('comment');
   }
 
+  getComments() {
+    this.galleryService.getComments(this.photo.id).subscribe({
+      next: (response: any) => { 
+          this.comments = response.map((comment: {content: String; username: String; }) => new Comment(comment.content, comment.username));
+      },
+      error: () => { }
+    });
+  }
 
-  addComments(id: number) {
-    //dodac obsługe
+
+  addComments() {
+    const content = this.newComment?.value;
+    this.galleryService.addComment(content, this.photo.id).subscribe({
+      next: (response: any) => {
+        this.getComments()
+      },
+      error: (err) => {console.log(err)}
+    })
+    this.commentForm.reset();
   }
 
   
@@ -76,4 +94,14 @@ export class PhotoModalComponent implements OnInit{
       error: () => { }
     });
   }
+}
+
+class Comment {
+  constructor(content: String, author: String) {
+    this.content = content;
+    this.author = author;
+  }
+
+  content: String;
+  author: String;
 }
