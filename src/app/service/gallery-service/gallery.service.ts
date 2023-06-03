@@ -25,4 +25,39 @@ export class GalleryService {
       return throwError(() => {})
     }));
   }
+
+  saveImage(userId: number, category: number, description: any, image: any) {
+    return this.http.post(`${environment.apiUrl}/images/newImage/${userId}/${category}/${description}`, image, this.httpOptions).pipe(catchError(() => {
+      return throwError(() => {})
+    }));
+  }
+
+  addRating(userId: any, imageId: any, rating: any) {
+    var body = {
+      ownerId: userId,
+      imageId: imageId,
+      rating: rating,
+    }
+    return this.http.put(`${environment.apiUrl}/images/add_rating`, body, this.httpOptions).pipe(catchError(() => {
+      return throwError(() => {})
+    }));
+  }
+
+  getImageById(id: any) {
+    return this.http.get(`${environment.apiUrl}/images/imagedata/${id}`, this.httpOptions).pipe(catchError(() => {
+      return throwError(() => {})
+    }));
+  }
+
+  addComment(content: String, imageId: number) {
+    return this.http.post(`${environment.apiUrl}/images/add_comment`, {content, imageId}, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
+
+  getComments(imageId: number) {
+    return this.http.get(`${environment.apiUrl}/images/get_comments/${imageId}`, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
 }

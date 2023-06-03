@@ -18,15 +18,18 @@ export class MainGalleryComponent implements OnInit {
   constructor(private dialogRef: MatDialog, private galleryService: GalleryService) {
       this.galleryService.getImages().subscribe({
         next: (response: any) => {
-          console.log(response);
           let i;
           for (i = 0; i < response.length; i++) {
             this.images[i] = {
+              id: response[i].id,
               picture: 'data:image/jpeg;base64,' + response[i].imageData,
-              author: response[i].username,
+              author: response[i].ownerId,
               category: response[i].category,
+              name: response[i].name,
+              description: response[i].description,
+              date: response[i].date,
+              rating: response[i].currentRating
             }
-            console.log(response[i].imageData)
           }
         },
         error: () => { }
