@@ -6,7 +6,7 @@
         
         <div class="gallery ">
           <ngx-masonry [options]="masonryOptions" [ordered]="true">
-            <div ngxMasonryItem class="masonry-item"  *ngFor="let picture of masonryImages" class="masonry-item">
+            <div ngxMasonryItem *ngFor="let picture of masonryImages.slice(0, limit); let i = index" class="masonry-item" (click)="openDialog(i)">
               <img src="{{picture.picture}}">
             </div>
           </ngx-masonry>

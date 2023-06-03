@@ -13,6 +13,7 @@ export class PhotoModalComponent implements OnInit{
   photo: any;
   rating: any;
   comments: Comment[] = [];
+  rate = 0;
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private galleryService: GalleryService) {
@@ -78,7 +79,6 @@ export class PhotoModalComponent implements OnInit{
   //   return Number(avarage.toFixed(2))
   // }
 
-  rate = 0;
   updateRating(r: any){
     this.rate = r;
     this.galleryService.addRating(this.photo.author, this.photo.id, r).subscribe({
