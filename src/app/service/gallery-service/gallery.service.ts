@@ -60,4 +60,10 @@ export class GalleryService {
       return throwError(()=>{});
     }));
   }
+
+  getUsersImages(userId: any) {
+    return this.http.get(`${environment.apiUrl}/images/${userId}`, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
 }
