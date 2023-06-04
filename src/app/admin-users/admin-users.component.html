@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row admin_content">
+
+        <div class="mb-3 filtr">
+            <p>Wyszukaj po loginie...</p>
+            <input type="text" class="form-control" [(ngModel)]="loginFilter">
+        </div>
+
+            <div class="row py-5">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Imie</th>
+                        <th scope="col">Nazwisko</th>
+                        <th scope="col">Nick</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of filterUsers()">
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.firstName }}</td>
+                            <td>{{ user.lastName }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>
+                                <a class="btn btn-sm btn-danger delete-confirm" type="button" >
+                                    Usuń
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+        
+</div>

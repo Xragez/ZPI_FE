@@ -29,6 +29,10 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
 import { DndDirective } from './directives/dnd.directive';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminPhotosComponent } from './admin-photos/admin-photos.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminPostsComponent } from './admin-posts/admin-posts.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,10 @@ import { DndDirective } from './directives/dnd.directive';
     PhotoModalComponent,
     DragAndDropComponent,
     DndDirective,
+    AdminDashboardComponent,
+    AdminPhotosComponent,
+    AdminUsersComponent,
+    AdminPostsComponent,
   ],
   
   imports: [

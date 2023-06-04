@@ -66,4 +66,17 @@ export class GalleryService {
       return throwError(()=>{});
     }));
   }
+
+  // deleteImageById(imageId: number) {
+  //   return this.http.delete(`${environment.apiUrl}/images/delete_image/${imageId}`, this.httpOptions).pipe(catchError(() => {
+  //     return throwError(()=>{});
+  //   }));
+  // }
+
+  deleteImageById(imageId: any) {
+    return this.http.delete(`${environment.apiUrl}/images/delete_image/${imageId}`, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
+  
 }

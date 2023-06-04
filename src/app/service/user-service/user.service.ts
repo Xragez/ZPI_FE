@@ -30,6 +30,12 @@ export class UserService {
     }
   }
 
+  getAllUsers() {
+    return this.http.get(`${environment.apiUrl}/users`).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
+
   getUserByEmail(email: string | null) {
     return this.http.get(`${environment.apiUrl}/users/${email}`, this.httpOptions).pipe(catchError(() => {
       return throwError(()=>{});

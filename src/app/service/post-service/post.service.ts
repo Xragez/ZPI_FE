@@ -44,4 +44,9 @@ export class PostService {
     }));
   }
 
+  deletePost(postId: number) {
+    return this.http.delete(`${environment.apiUrl}/posts/delete/${postId}`, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
 }

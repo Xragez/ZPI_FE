@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row admin_content">
+
+
+            <div class="row py-5">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Zdjecie</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let image of images">
+                            <td>{{ image.id }}</td>
+                            <td class="img_table"><img src="{{image.picture}}"></td>
+                            <td>{{ image.author }}</td>
+                            <td>
+                                <button class="btn btn-sm btn-danger" (click)="deletePhoto(image)">
+                                    Usuń
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+        
+</div>

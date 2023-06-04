@@ -9,6 +9,10 @@ import { UserGalleryComponent } from './user-gallery/user-gallery.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { MainGalleryComponent } from './main-gallery/main-gallery.component';
 import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminPhotosComponent } from './admin-photos/admin-photos.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminPostsComponent } from './admin-posts/admin-posts.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -22,6 +26,13 @@ const routes: Routes = [
       {path: 'user_edit', component: UserEditComponent },
       {path: 'user_gallery', component: UserGalleryComponent},
       {path: 'new_image', component: DragAndDropComponent },
+    ]
+  },
+  {path: 'admin_dashboard', component: AdminDashboardComponent,
+    children: [
+      {path: 'users', component: AdminUsersComponent},
+      {path: 'photos', component: AdminPhotosComponent},
+      {path: 'posts', component: AdminPostsComponent}
     ]
   },
 
