@@ -135,6 +135,7 @@ export class MainGalleryComponent implements OnInit {
 
   
   handleSelection(event: any) {
+    console.log(this.selectedCategory)
     this.filterImages();
     console.log(this.selectedCategory)
   }

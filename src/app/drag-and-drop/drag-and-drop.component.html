@@ -1,3 +1,20 @@
+
+<div class="select_div">
+<div class="mb-3">
+  <select class="form-select" [(ngModel)] = 'selectedCategory'>
+      <option *ngFor="let category of categories" [ngValue]="category.id">
+          {{category.name}}
+      </option>
+  </select>
+</div>
+<div class="mb-3">
+  <label for="user_description" class="form-label">Opis</label>
+  <textarea class="form-control" rows="5" [(ngModel)] = 'description'>
+  </textarea>
+</div>
+</div>
+
+
 <div class="container" appDnd (fileDropped)="onFileDropped($event)">
     <input type="file" #fileDropRef id="fileDropRef" (change)="onSelectFile($any($event))" />
     <img src="assets/img/dnd/ic-upload-file.svg" alt="">

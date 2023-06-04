@@ -26,7 +26,7 @@ export class GalleryService {
     }));
   }
 
-  saveImage(userId: number, category: number, description: any, image: any) {
+  saveImage(userId: string, category: number | null, description: any, image: any) {
     return this.http.post(`${environment.apiUrl}/images/newImage/${userId}/${category}/${description}`, image, this.httpOptions).pipe(catchError(() => {
       return throwError(() => {})
     }));

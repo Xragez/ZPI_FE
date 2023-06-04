@@ -8,6 +8,7 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { UserGalleryComponent } from './user-gallery/user-gallery.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { MainGalleryComponent } from './main-gallery/main-gallery.component';
+import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const routes: Routes = [
     children: [
       {path: 'home_dashboard', component: DashboardHomeComponent },
       {path: 'user_edit', component: UserEditComponent },
-      {path: 'user_gallery', component: UserGalleryComponent },
+      {path: 'user_gallery', component: UserGalleryComponent},
+      {path: 'new_image', component: DragAndDropComponent },
     ]
   },
 
