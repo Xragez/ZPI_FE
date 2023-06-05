@@ -16,24 +16,7 @@ export class MainGalleryComponent implements OnInit {
   images: Image[] = [];
 
   constructor(private dialogRef: MatDialog, private galleryService: GalleryService) {
-      this.galleryService.getImages().subscribe({
-        next: (response: any) => {
-          let i;
-          for (i = 0; i < response.length; i++) {
-            this.images[i] = {
-              id: response[i].id,
-              picture: 'data:image/jpeg;base64,' + response[i].imageData,
-              author: response[i].ownerId,
-              category: response[i].category,
-              name: response[i].name,
-              description: response[i].description,
-              date: response[i].date,
-              rating: response[i].currentRating
-            }
-          }
-        },
-        error: () => { }
-      });
+    this.getImages();
   }
 
   ngOnInit() {
@@ -41,10 +24,36 @@ export class MainGalleryComponent implements OnInit {
 	}
 
   openDialog(index: number){
-    this.dialogRef.open(PhotoModalComponent, {
+
+    let d = this.dialogRef.open(PhotoModalComponent, {
       data : {
         photo : this.images[index]
       }
+    });
+
+    d.afterClosed().subscribe(result => {
+      this.getImages()
+    });
+  }
+
+  getImages() {
+    this.galleryService.getImages().subscribe({
+      next: (response: any) => {
+        let i;
+        for (i = 0; i < response.length; i++) {
+          this.images[i] = {
+            id: response[i].id,
+            picture: 'data:image/jpeg;base64,' + response[i].imageData,
+            author: response[i].ownerId,
+            category: response[i].category,
+            name: response[i].name,
+            description: response[i].description,
+            date: response[i].date,
+            rating: response[i].currentRating
+          }
+        }
+      },
+      error: () => { }
     });
   }
 

@@ -18,7 +18,11 @@ export class HeaderComponent implements OnInit {
     this.username = localStore.getData('username');
     this.userService.getUserByEmail(localStore.getData("email")).subscribe({
       next: (response: any) => {
-        this.avatar = 'data:image/jpeg;base64,' + response.avatar;
+        if (response.avatar == null) {
+          this.avatar = '/assets/img/img_default.jpg'
+        } else {
+          this.avatar = 'data:image/jpeg;base64,' + response.avatar;
+        }
       },
       error: (error: any) => {
         console.log(error)

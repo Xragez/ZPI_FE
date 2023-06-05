@@ -63,7 +63,11 @@ export class UserEditComponent implements OnInit{
         this.user.role = response.role;
         this.user.description = response.description;
         this.user.avatar = response.avatar;
-        this.avatarImg = 'data:image/jpeg;base64,' + this.user.avatar;
+        if (this.user.avatar == null) {
+          this.avatarImg = '/assets/img/img_default.jpg'
+        } else {
+          this.avatarImg = 'data:image/jpeg;base64,' + this.user.avatar;
+        }
       },
       error: () => { }
     });

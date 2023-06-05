@@ -14,7 +14,11 @@ export class SidenavComponent implements OnInit{
   constructor(private localStore: LocalService, private userService: UserService) {
     this.userService.getUserByEmail(localStore.getData("email")).subscribe({
       next: (response: any) => {
-        this.avatar = 'data:image/jpeg;base64,' + response.avatar;
+        if (response.avatar == null) {
+          this.avatar = '/assets/img/img_default.jpg'
+        } else {
+          this.avatar = 'data:image/jpeg;base64,' + response.avatar;
+        }
       },
       error: (error: any) => {
         console.log(error)
