@@ -98,6 +98,11 @@
     background-color:rgb(247, 249, 252);
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     border-radius: 8px;
+    min-height: 80px;
+}
+
+.comment p {
+    word-wrap: break-word;
 }
 
 .comment .author{
@@ -105,6 +110,11 @@
     font-weight: 500;
 
 }
+
+.comment .date{
+    margin-left: 320px;
+}
+
 
 .add_comment{
     width: 95%;

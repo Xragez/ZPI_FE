@@ -6,10 +6,24 @@
 
 .navbar li a{
     color: white;
+    line-height: 42px;
 }
 
 .navbar-brand i {
     font-size: 36px;
     margin-left: 45px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+
+
+.user-image{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
 }
 

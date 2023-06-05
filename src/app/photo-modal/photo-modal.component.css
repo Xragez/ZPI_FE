@@ -16,8 +16,9 @@
 .photo img{
     justify-content: center; 
     align-items: center;
+    object-fit: contain;
     height: 560px;
-    width: auto;
+    width: 100%;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
@@ -42,8 +43,9 @@
 }
 
 .description{
-    min-height: 80px;
+    min-height: 110px;
     padding: 14px;
+    width: 380px;
 }
 
 .comments {
@@ -52,7 +54,7 @@
     width: 380px;
     display: flex;
     flex-direction: column-reverse;
-    height: 500px;
+    height: 420px;
     overflow-y: auto;
 }
 

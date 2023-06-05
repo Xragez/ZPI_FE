@@ -11,13 +11,14 @@
             <a class="nav-link" href="#">Strona główna</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Arykuły</a>
+            <a class="nav-link" href="#">Posty</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/gallery">Galeria</a>
           </li>
           <li class="nav-item">
-            <div *ngIf="username">
+            <div *ngIf="username" class="user-info">
+              <img [src]="avatar" alt="" class="user-image mr-1 p-2" />
               <a class="nav-link" routerLink="/user_dashboard">{{username}}</a>
             </div>
             <div *ngIf="!username">
