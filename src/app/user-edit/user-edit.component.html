@@ -36,6 +36,9 @@
           <div class="alert alert-success" role="alert" *ngIf="infoAvatar">
             {{infoAvatar}}
           </div>
+          <div class="alert alert-danger" role="alert" *ngIf="errorAvatar">
+            {{errorAvatar}}
+          </div>
           <form>
             <div class="form-group">
               <img [src]="avatarImg" height="500" class="mb-2">
