@@ -49,4 +49,12 @@ export class PostService {
       return throwError(()=>{});
     }));
   }
+
+  deletePostCommentById(comment_id: number){
+    return this.http.delete(`${environment.apiUrl}/posts/delete_post_comment/${comment_id}`, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
+
+
 }

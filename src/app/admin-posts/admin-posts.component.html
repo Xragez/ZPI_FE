@@ -22,10 +22,26 @@
                             <td class="id">{{ post.id }}</td>
                             <td class="content"> {{ post.content }}</td>
                             <td>{{ post.author }}</td>
-                            <td>
-                                <button class="btn btn-sm btn-danger" (click)="deletePost(post)">
+                            <td class="btn-table">
+                                <button class="btn btn-sm btn-danger mx-3" (click)="deletePost(post)">
                                     Usuń
                                 </button>
+                                <button class="btn btn-sm btn-primary" (click)="toggleComments(post)">
+                                    {{ post.showComments ? 'Ukryj komentarze' : 'Pokaż komentarze' }}
+                                </button>
+                                <div *ngIf="post.showComments">
+                                    <div class="comments" *ngFor="let comment of post.comments">
+                                        <div class="comment row">
+                                            <div class="col-11">
+                                                <p>{{comment.content}}</p>
+                                            </div>
+                                            <div class="col-1 delete-icon">
+                                                <i class="fa-solid fa-trash" (click)="deleteComment(comment)"></i>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

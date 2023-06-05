@@ -14,19 +14,14 @@ export class AdminPostsComponent implements OnInit{
   }
 
   constructor(private postService: PostService) {
-    this.postService.getAllPosts().subscribe({
+    postService.getAllPosts().subscribe({
       next: (response: any) => {
-        let i;
-        for (i = 0; i < response.length; i++) {
-          this.posts[i] = {
-            id: response[i].id,
-            content:response[i].content,
-            author:response[i].author,
-          }
-        }
+        console.log(response)
+        this.posts = response.map((post: { content: String; author: String; id: number}) => new Post(post.content, post.author, post.id));
       },
       error: (err) => {console.log(err)}
     })
+      
   }
 
   msgInfo: string = '';
@@ -43,6 +38,41 @@ export class AdminPostsComponent implements OnInit{
     })
   }
 
+  toggleComments(post: Post) {
+    post.showComments = !post.showComments;
+    if (post.showComments) {
+      this.postService.getComments(post.id).subscribe({
+        next: (response: any) => {
+          post.comments = response.map((comment: { content: string; username: string, id: number, postId: number }) =>  new Comment(comment.content, comment.username, comment.id, comment.postId));
+        },
+        error: (err) => {console.log(err)}
+      })
+      this.postService.getComments(post.id).subscribe(
+        (response: any) => {
+          console
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  deleteComment(comment: Comment){
+    this.postService.deletePostCommentById(comment.id).subscribe({
+      next: (response: any) => {
+        console.log('usunieto:', comment.id)
+        const post = this.posts.find((p) => p.id === comment.postId);
+        if (post) {
+        post.comments = post.comments.filter((c) => c.id !== comment.id);
+      }
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
 }
 
 
@@ -52,9 +82,27 @@ class Post {
     this.id = id
     this.content = content;
     this.author = author;
+    this.showComments = false;
+    this.comments = [];
   }
 
   id: number
   content: String;
   author: String;
+  showComments: boolean;
+  comments: Comment[];
+}
+
+class Comment {
+  constructor(content: String, author: String, id: number, postId:number) {
+    this.content = content;
+    this.author = author;
+    this.id = id;
+    this.postId = postId;
+  }
+
+  content: String;
+  author: String;
+  id: number;
+  postId: number;
 }
