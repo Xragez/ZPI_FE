@@ -27,7 +27,7 @@ export class MainGalleryComponent implements OnInit {
 
     let d = this.dialogRef.open(PhotoModalComponent, {
       data : {
-        photo : this.images[index]
+        photo : this.masonryImages[index]
       }
     });
 
