@@ -20,6 +20,14 @@ export class PhotoModalComponent implements OnInit{
     console.log(data)
     this.photo = data.photo
     this.rating = this.photo.rating
+    galleryService.getUsersRating(this.photo.id, this.photo.author).subscribe({
+      next: (response: any) => { 
+        if (response != null) {
+          this.rate = response.rating;
+        }
+      },
+      error: () => { }
+    });
     this.getComments()
   }
 
@@ -85,7 +93,6 @@ export class PhotoModalComponent implements OnInit{
       next: (response: any) => { 
         this.galleryService.getImageById(this.photo.id).subscribe({
           next: (response: any) => { 
-              this.rate = response.currentRating
               this.rating = response.currentRating
           },
           error: () => { }

@@ -78,5 +78,10 @@ export class GalleryService {
       return throwError(()=>{});
     }));
   }
-  
+
+  getUsersRating(imageId: any, userId: any) {
+    return this.http.get(`${environment.apiUrl}/images/get_user_rating/${imageId}/${userId}`, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
 }
