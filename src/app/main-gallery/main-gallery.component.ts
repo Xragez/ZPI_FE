@@ -53,6 +53,7 @@ export class MainGalleryComponent implements OnInit {
             rating: response[i].currentRating
           }
         }
+        this.filterImages()
       },
       error: () => { }
     });
