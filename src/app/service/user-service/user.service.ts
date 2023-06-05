@@ -31,7 +31,7 @@ export class UserService {
   }
 
   getAllUsers() {
-    return this.http.get(`${environment.apiUrl}/users`).pipe(catchError(() => {
+    return this.http.get(`${environment.apiUrl}/users`, this.httpOptions).pipe(catchError(() => {
       return throwError(()=>{});
     }));
   }

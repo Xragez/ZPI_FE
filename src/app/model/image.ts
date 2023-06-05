@@ -1,9 +1,10 @@
 export class Image {
 
-    constructor(picture: any, author: any, category: any, id: any, name: any, description: any, date: any, rating: any) {
+    constructor(picture: any, author: any, username: any, category: any, id: any, name: any, description: any, date: any, rating: any) {
         this.id = id
         this.picture = picture
         this.author = author
+        this.username = username
         this.category = category
         this.name = name
         this.description = description
@@ -14,6 +15,7 @@ export class Image {
     id: any
     picture: any
     author: any
+    username: any
     category: any
     name: any
     description: any

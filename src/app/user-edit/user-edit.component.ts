@@ -30,6 +30,7 @@ export class UserEditComponent implements OnInit{
 
   infoEdit : string = ''
   infoAvatar: string = ''
+  errorAvatar: string = ''
   infoPassword: string = ''
   passwordErrorMsg: string = ''
 
@@ -131,7 +132,6 @@ export class UserEditComponent implements OnInit{
   }
 
   updateAvatar() {
-    if (this.user.avatar != null) {
       const uploadImageData = new FormData();
       uploadImageData.append('avatar', this.image, this.avatarImg.name);
       this.userService.updateUserAvatar(this.localStore.getData("id"), uploadImageData).subscribe({
@@ -139,9 +139,10 @@ export class UserEditComponent implements OnInit{
           this.infoAvatar = "Zdjęcie profilowe zostało pomyślnie zmienione"
           window.location.reload();
         },
-        error: () => {}
+        error: () => {
+          this.errorAvatar = "Brak zdjęcia"
+        }
       })
-    }
   }
 
   updateUserPassword() {

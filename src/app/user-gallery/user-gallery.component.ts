@@ -26,6 +26,7 @@ export class UserGalleryComponent implements OnInit{
             id: response[i].id,
             picture: 'data:image/jpeg;base64,' + response[i].imageData,
             author: response[i].ownerId,
+            username: response[i].username,
             category: response[i].category,
             name: response[i].name,
             description: response[i].description,

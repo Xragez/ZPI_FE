@@ -44,6 +44,7 @@ export class MainGalleryComponent implements OnInit {
           this.images[i] = {
             id: response[i].id,
             picture: 'data:image/jpeg;base64,' + response[i].imageData,
+            username: response[i].username,
             author: response[i].ownerId,
             category: response[i].category,
             name: response[i].name,
