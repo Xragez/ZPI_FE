@@ -8,6 +8,7 @@ import { UserService } from '../service/user-service/user.service';
   styleUrls: ['./admin-users.component.css']
 })
 export class AdminUsersComponent implements OnInit{
+
   users : User [] = [];
 
   ngOnInit() {

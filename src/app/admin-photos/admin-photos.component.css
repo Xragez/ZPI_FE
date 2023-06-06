@@ -2,3 +2,47 @@
     width: 140px;
     height: auto;
 }
+
+.comments{
+    position: relative;
+    right: 200px;
+    margin-top: 20px;
+    width: 600px;
+}
+
+.comment{
+    width: 500px;
+    padding: 6px;
+    background-color: rgb(47, 47, 47);
+    border-radius: 10px;
+
+}
+
+
+.comment p {
+    word-wrap: break-word;
+    color: white;
+}
+
+.comment i{
+    margin-top: 6px;
+    color: white ;
+    font-size: 18px;
+}
+
+.comment i:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.id{
+    width: 50px;
+}
+
+table td{
+    max-width: 100px;
+}
+
+.btn-table{
+    min-width: 300px;
+}

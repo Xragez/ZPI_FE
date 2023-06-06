@@ -17,12 +17,39 @@
             <a class="nav-link" routerLink="/gallery">Galeria</a>
           </li>
           <li class="nav-item">
-            <div *ngIf="username" class="user-info">
-              <img [src]="avatar" alt="" class="user-image mr-1 p-2" />
-              <a class="nav-link" routerLink="/user_dashboard">{{username}}</a>
-            </div>
             <div *ngIf="!username">
               <a class="nav-link" routerLink="/login">Zaloguj się</a>
+            </div>
+          </li>
+          <li class="nav-item" *ngIf="username">
+            <div class="dropdown">
+              <li class="nav-item dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div *ngIf="username" class="user-info">
+                  <img [src]="avatar" alt="" class="user-image mr-1 p-2" />
+                  <p>{{username}}</p>
+                </div>
+              </li>
+              <ul class="dropdown-menu">
+                <div *ngIf="role === 'USER'">
+                  <li>
+                    <button class="dropdown-item" type="button" routerLink="/user_dashboard/home_dashboard" >Profil Użytkownika</button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" type="button" (click)="logout()">Wyloguj się</button>
+                  </li>
+                </div>
+                <div *ngIf="role === 'ADMIN'">
+                  <li>
+                    <button class="dropdown-item" type="button" routerLink="/user_dashboard/home_dashboard">Profil Użytkownika</button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" type="button" routerLink="/admin_dashboard/users">Panel administratora</button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" type="button" (click)="logout()">Wyloguj się</button>
+                  </li>
+                </div>
+              </ul>
             </div>
           </li>
         </ul>

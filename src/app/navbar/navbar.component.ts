@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {LocalService} from "../service/local-service/local.service";
 import { UserService } from '../service/user-service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,12 @@ import { UserService } from '../service/user-service/user.service';
 export class NavbarComponent {
 
   username: String | null;
+  role: String| null;
   avatar: any;
   
-  constructor( private localStore: LocalService, private userService: UserService) {
+  constructor(private router: Router, private localStore: LocalService, private userService: UserService) {
     this.username = this.localStore.getData('username');
+    this.role = this.localStore.getData('role');
     this.userService.getUserByEmail(localStore.getData("email")).subscribe({
       next: (response: any) => {
         if (response.avatar == null) {
@@ -26,5 +29,10 @@ export class NavbarComponent {
         console.log(error)
       }
     })
+  }
+
+  logout():void {
+    this.localStore.clearData();
+    this.router.navigate(['/main']);
   }
 }

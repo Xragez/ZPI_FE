@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GalleryService } from '../service/gallery-service/gallery.service';
-import { Image } from '../model/image';
+
 
 @Component({
   selector: 'app-admin-photos',
@@ -22,9 +22,8 @@ export class AdminPhotosComponent implements OnInit{
             username: response[i].username,
             category: response[i].category,
             name: response[i].name,
-            description: response[i].description,
-            date: response[i].date,
-            rating: response[i].currentRating
+            showComments: false,
+            comments: response[i].comments
           }
         }
       },
@@ -43,4 +42,75 @@ export class AdminPhotosComponent implements OnInit{
     })
   }
 
+  toggleComments(image: Image) {
+    image.showComments = !image.showComments;
+    if (image.showComments) {
+      this.galleryService.getComments(image.id).subscribe({
+        next: (response: any) => {
+          image.comments = response.map((comment: { content: string; username: string, id: number, imageId: number }) =>  new Comment(comment.content, comment.username, comment.id, comment.imageId));
+        },
+        error: (err) => {console.log(err)}
+      })
+      this.galleryService.getComments(image.id).subscribe(
+        (response: any) => {
+          console
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  deleteComment(comment:Comment){
+    this.galleryService.deleteImageCommentById(comment.id).subscribe({
+      next: (response: any) => {
+        const image = this.images.find((i) => i.id === comment.imageId);
+        if (image){
+          image.comments = image.comments.filter((i) => i.id !== comment.id);
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
+}
+
+class Image {
+
+  constructor(picture: any, author: any, username: any, category: any, id: any, name: any) {
+      this.id = id
+      this.picture = picture
+      this.author = author
+      this.username = username
+      this.category = category
+      this.name = name
+      this.showComments = false
+      this.comments = [];
+  }
+
+  id: any
+  picture: any
+  author: any
+  username: any
+  category: any
+  name: any
+  showComments: boolean;
+  comments: Comment[];
+}
+
+class Comment {
+  constructor(content: String, author: String, id: number, imageId:number) {
+    this.content = content;
+    this.author = author;
+    this.id = id;
+    this.imageId = imageId;
+  }
+
+  content: String;
+  author: String;
+  id: number;
+  imageId: number;
 }

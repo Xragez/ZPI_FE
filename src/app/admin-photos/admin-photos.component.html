@@ -21,6 +21,23 @@
                                 <button class="btn btn-sm btn-danger" (click)="deletePhoto(image)">
                                     Usuń
                                 </button>
+                                <button class="btn btn-sm btn-primary" (click)="toggleComments(image)">
+                                    {{ image.showComments ? 'Ukryj komentarze' : 'Pokaż komentarze' }}
+                                </button>
+                                <div *ngIf="image.showComments">
+                                    <div class="comments" *ngFor="let comment of image.comments">
+                                        <div class="comment row">
+                                            <div class="col-11">
+                                                <p>Autor: {{comment.author}}</p>
+                                                <p>{{comment.content}}</p>
+                                            </div>
+                                            <div class="col-1 delete-icon">
+                                                <i class="fa-solid fa-trash" (click)="deleteComment(comment)"></i>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

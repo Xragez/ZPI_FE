@@ -84,4 +84,10 @@ export class GalleryService {
       return throwError(()=>{});
     }));
   }
+
+  deleteImageCommentById(imageId: any) {
+    return this.http.delete(`${environment.apiUrl}/images/delete_image_comment/${imageId}`, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
 }
