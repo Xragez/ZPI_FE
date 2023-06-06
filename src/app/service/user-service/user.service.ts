@@ -37,6 +37,7 @@ export class UserService {
   }
 
   getUserByEmail(email: string | null) {
+    this.updateToken();
     return this.http.get(`${environment.apiUrl}/users/${email}`, this.httpOptions).pipe(catchError(() => {
       return throwError(()=>{});
     }));
