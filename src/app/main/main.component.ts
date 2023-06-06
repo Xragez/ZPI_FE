@@ -60,6 +60,7 @@ export class MainComponent implements OnInit{
   }
 
   addComments(msg: Post){
+
     console.log(msg)
     const content = this.newComment?.value;
     const postId = msg.id;

@@ -45,4 +45,18 @@ export class AdminUsersComponent implements OnInit{
     
     return this.users.filter(user => user.username.toLowerCase().includes(this.loginFilter.toLowerCase()));
   }
+
+  msgInfo: string = '';
+
+  deleteUser(user: User) {
+    this.userService.deleteUser(user.id).subscribe({
+      next: (response: any) => {
+        window.location.reload();
+        this.msgInfo = 'Użytkownik został usuniety';
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
 }

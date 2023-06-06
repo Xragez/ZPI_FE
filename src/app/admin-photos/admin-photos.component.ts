@@ -33,10 +33,13 @@ export class AdminPhotosComponent implements OnInit{
 
   ngOnInit() {}
 
+  msgInfo: string = '';
+
   deletePhoto(image: Image) {
     this.galleryService.deleteImageById(image.id).subscribe({
       next: (response: any) => {
         window.location.reload();
+        this.msgInfo = 'Zdjęcie został usuniety'
       },
       error: (err) => {console.log(err);}
     })
@@ -65,6 +68,7 @@ export class AdminPhotosComponent implements OnInit{
   deleteComment(comment:Comment){
     this.galleryService.deleteImageCommentById(comment.id).subscribe({
       next: (response: any) => {
+        this.msgInfo = 'Komentarz został usuniety'
         const image = this.images.find((i) => i.id === comment.imageId);
         if (image){
           image.comments = image.comments.filter((i) => i.id !== comment.id);
