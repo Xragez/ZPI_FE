@@ -33,6 +33,6 @@ export class NavbarComponent {
 
   logout():void {
     this.localStore.clearData();
-    this.router.navigate(['/main']);
+    window.location.reload();
   }
 }

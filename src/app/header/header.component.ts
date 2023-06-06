@@ -30,10 +30,9 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  logout() {
-    window.location.reload();
-    console.log('dziala');
+  logout():void {
     this.localStore.clearData();
+    this.router.navigate(['/main']);
   }
 
   ngOnInit(): void {}
