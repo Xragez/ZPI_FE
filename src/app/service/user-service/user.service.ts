@@ -66,4 +66,10 @@ export class UserService {
       return throwError(() => {})
     }));
   }
+
+  deleteUser(userId: number) {
+    return this.http.delete(`${environment.apiUrl}/users/delete_user/${userId}`, this.httpOptions).pipe(catchError(() => {
+      return throwError(()=>{});
+    }));
+  }
 }

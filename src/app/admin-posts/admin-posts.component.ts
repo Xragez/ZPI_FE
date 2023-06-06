@@ -61,6 +61,7 @@ export class AdminPostsComponent implements OnInit{
   deleteComment(comment: Comment){
     this.postService.deletePostCommentById(comment.id).subscribe({
       next: (response: any) => {
+        this.msgInfo = 'Komentarz został usuniety'
         const post = this.posts.find((p) => p.id === comment.postId);
         if (post) {
         post.comments = post.comments.filter((c) => c.id !== comment.id);
