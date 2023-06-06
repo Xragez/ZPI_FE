@@ -13,6 +13,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminPhotosComponent } from './admin-photos/admin-photos.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminPostsComponent } from './admin-posts/admin-posts.component';
+import {AuthGuard} from "./guards/auth.guard";
+import {AdminGuard} from "./guards/admin.guard";
 
 const routes: Routes = [
   {path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -20,7 +22,7 @@ const routes: Routes = [
   {path: 'gallery', component: MainGalleryComponent },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'user_dashboard', component: UserDashboardComponent,
+  {path: 'user_dashboard', component: UserDashboardComponent, canActivate: [AuthGuard],
     children: [
       {path: 'home_dashboard', component: DashboardHomeComponent },
       {path: 'user_edit', component: UserEditComponent },
@@ -28,7 +30,7 @@ const routes: Routes = [
       {path: 'new_image', component: DragAndDropComponent },
     ]
   },
-  {path: 'admin_dashboard', component: AdminDashboardComponent,
+  {path: 'admin_dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard],
     children: [
       {path: 'users', component: AdminUsersComponent},
       {path: 'photos', component: AdminPhotosComponent},

@@ -35,6 +35,15 @@ export class AuthService {
       return throwError(()=>{});
     }));
   }
+
+  isLoggedIn() {
+    return !!this.localStore.getData('username')
+  }
+
+  hasRole(role: String) {
+    return this.localStore.getData('role') === role;
+  }
+
 }
 
 export class RegisterUser {

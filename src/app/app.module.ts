@@ -33,6 +33,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminPhotosComponent } from './admin-photos/admin-photos.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminPostsComponent } from './admin-posts/admin-posts.component';
+import {AuthGuard} from "./guards/auth.guard";
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { AdminPostsComponent } from './admin-posts/admin-posts.component';
     AdminUsersComponent,
     AdminPostsComponent,
   ],
-  
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -75,7 +76,7 @@ import { AdminPostsComponent } from './admin-posts/admin-posts.component';
     InfiniteScrollModule,
     MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
